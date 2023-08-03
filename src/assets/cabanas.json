@@ -1,0 +1,50 @@
+[
+    {
+      "img": "src/assets/imgs/kashi.jpg",
+      "name": "KASHI",
+      "description": "\"Luna\" en los pueblos Wayuu.",
+      "section": "div-fotos-cabanas"
+    },
+
+    {
+      "img": "src/assets/imgs/kogui.jpg",
+      "name": "KOGUI",
+      "description": "Comunidad ancestral de la Sierra nevada de Santa marta."
+    },
+
+    {
+      "img": "src/assets/imgs/kombilesa.jpg",
+      "name": "KOMBILESA",
+      "description": "\"Amigo\" en lengúa palenquera."
+    },
+
+    {
+      "img": "src/assets/imgs/maleiwa.jpg",
+      "name": "MALEIWA",
+      "description": "Dios creador Wayuu."
+    },
+
+    {
+      "img": "src/assets/imgs/ochun.jpg",
+      "name": "OCHUN",
+      "description": "Reina del agua."
+    },
+
+    {
+      "img": "src/assets/imgs/pangea.jpg",
+      "name": "PANGEA",
+      "description": "Nombre del continente raíz."
+    },
+
+    {
+      "img": "src/assets/imgs/polekakasue.jpg",
+      "name": "POLEKA KASUE",
+      "description": "Nombre ancestral del nevado Santa Isabel."
+    },
+
+    {
+      "img": "src/assets/imgs/serankua.jpg",
+      "name": "SERANKUA",
+      "description": "Dios creador y sol de la Sierra Nevada de Santa Marta."
+    }
+]

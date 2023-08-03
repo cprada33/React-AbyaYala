@@ -1,0 +1,117 @@
+/* FONTS */
+
+@mixin bold {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+@mixin black {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+}
+
+@mixin regular {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+@mixin semibold {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+/* FONTS DESKOPT */
+
+@mixin p {
+    @include regular;
+    font-size: 1.3rem;
+}
+
+@mixin mini-p {
+    @include regular;
+    font-size: 1.1rem;
+}
+
+@mixin h1 {
+    @include black;
+    font-size: 6.3rem;
+}
+
+@mixin h2 {
+    @include black;
+    font-size: 2.5rem;
+}
+
+@mixin h3 {
+    @include bold;
+    font-size: 2rem;
+}
+
+@mixin h4 {
+    @include semibold;
+    font-size: 1.6rem;
+}
+
+/* FONTS 576 */
+
+@mixin parrafo-576 {
+    @include regular;
+    font-size: 1.1rem;
+}
+
+@mixin mini-parrafo-576 {
+    @include regular;
+    font-size: 0.8rem;
+}
+
+@mixin h1-576 {
+    @include black;
+    font-size: 3rem;
+}
+
+@mixin h2-576 {
+    @include black;
+    font-size: 2rem;
+}
+
+@mixin h3-576 {
+    @include bold;
+    font-size: 2rem;
+}
+
+@mixin h3-576 {
+    @include semibold;
+    font-size: 1.6rem;
+}
+
+/* FONTS 429 */
+
+@mixin parrafo-429 {
+    @include regular;
+    font-size: 0.8rem;
+}
+
+@mixin mini-parrafo-429 {
+    @include regular;
+    font-size: 0.6rem;
+}
+
+@mixin h1-429 {
+    @include black;
+    font-size: 2.3rem;
+}
+
+@mixin h2-429 {
+    @include black;
+    font-size: 1.7rem;
+}
+
+@mixin h3-429 {
+    @include bold;
+    font-size: 1.7rem;
+}
+
+@mixin h3-429 {
+    @include semibold;
+    font-size: 1.4rem;
+}

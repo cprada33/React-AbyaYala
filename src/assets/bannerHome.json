@@ -1,0 +1,48 @@
+[
+    {
+        "img": "src/assets/imgs/bargente.jpeg",
+        "section": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/cena.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/aerea.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/genoveva.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/panoramica.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/piscinachica.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/piscinagente.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"
+    },
+
+    {
+        "img": "src/assets/imgs/piscinasola.jpeg",
+        "div": "div-img-banner-fotos",
+        "imgcss": "img-banner-fotos"}
+]

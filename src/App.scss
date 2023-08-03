@@ -1,0 +1,373 @@
+ @use '/src/Sass/mixins';
+ @import '/src/Sass/variables';
+
+ body {
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0vw;
+    font-family: 'Raleway', sans-serif;
+    h1 {
+        @include mixins.black;
+    }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 0 0 2.5vh 0;
+  background-color: $main;
+  @include mixins.regular;
+  color: white;
+  .correo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include mixins.regular;
+      font-size: 1.4rem;
+      padding: 20px 0 5px 0;
+      .correoLabel {
+        margin: 0;
+      }
+  }
+  .text-footer {
+      font-size: 0.9rem;
+      padding-bottom: 10px;
+  }
+  .text-footer-dos.primero {
+      margin-top: 0.5%;
+  }
+  .text-footer-dos {
+      font-size: 0.7rem;
+  }
+}
+
+.grid-banner {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: repeat(5, 1fr);
+  .img-grid-banner {
+      width: 117%;
+      grid-row: 1/6;
+  }
+  .text-gridbanner-parent {
+      align-self: center;
+      justify-self: center;
+      .text-gridbanner {
+          color: $main;
+          font-size: 7rem;
+          @include mixins.black;
+      }
+      .text-gridbanner.blue {
+          color: $second;
+      }
+  }
+  .parrafogridbanner-parent {
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      .parrafogridbanner {
+          text-align: center;
+          width: 80%;
+          @include mixins.regular;
+          font-size: 1.5rem;
+      }
+  }
+  .button-parent {
+      display: flex;
+      justify-content: center;
+      .button-reserva {
+          font-size: 1.6rem;
+          @include mixins.semibold;
+          background-color:$main;
+          padding: 4%;
+          border: $second 0.3vw solid;
+          // border-radius: 7%;
+          color: $white;
+      }
+  }
+
+  .booking {
+      align-content: baseline;
+      justify-content: center;
+  }
+}
+
+/* INFORMACION DE CABANAS */
+
+.secCabanas {
+    background: linear-gradient(180deg, $main, rgb(250,250,250));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+    padding-bottom: 3vh;
+    .tit-cab {
+        @include mixins.semibold;
+        color: $white;
+        font-size: 2.5rem;
+        padding: 2vh;
+    }
+    .precio {
+        @include mixins.semibold;
+        color: $white;
+        font-size: 2rem;
+        padding-top: 1vh;
+    }
+    .img-safari {
+        .cabanas {
+            width: 30vw;
+            height: auto;
+        }
+    }
+    .img-ancestral {
+        .cabanas {
+            width: 30vw;
+            height: auto;
+        }
+    }
+    .incluye {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: 1/3;
+        @include mixins.p;
+        .incluye-titulo {
+            @include mixins.bold;
+            font-size: 2.5rem;
+            color: $white;
+        }
+        .incluye-cierre {
+            @include mixins.bold;
+        }
+        p {
+            a {
+                text-decoration: none;
+                color: $third;
+            }
+        }
+    }
+}
+
+/* BANNER FOTOS */
+
+.banner-fotos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 30vh 30vh;
+    padding: 1vw;
+    gap: 1vw;
+    .div-img-banner-fotos {
+        height: 100%;
+        width: 100%;
+        .img-banner-fotos {
+            width: 100%;
+            height: 100%;
+            border-radius: 15%;
+            object-fit: cover;
+        }
+    }
+}
+
+/* LOCATION */
+
+.location {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 40vw 60vw;
+    .hlocation {
+        @include mixins.black;
+        color: $third;
+        font-size: 7rem;
+        text-align: center;
+        grid-column: 1/3;
+        padding-top: 20px;
+    }
+    #dlocation {
+        grid-row: 2/4;
+        justify-self: center;
+        width: 100%;
+        height: 100%;
+        padding: 1vw;
+    }
+    .div-location {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        align-self: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        .dlocation {
+            font-size: 4rem;
+            @include mixins.black;
+            color: $main;
+        }
+        .horariosLocation {
+            flex: 1;
+            @include mixins.p;
+        }
+    }
+    .div-location .segundo {
+        align-self: flex-start;
+        .dlocation.final {
+            font-size: 2.5rem;
+            @include mixins.black;
+            color: $main;
+        }
+    }
+}
+
+// CABANAS 
+
+.tit-cabana-page {
+    text-align: center;
+    color: $main;
+    padding-top: 2vh;
+    @include mixins.h1;
+}
+
+.subtexto {
+    @include mixins.p;
+    text-align: center;
+    padding-bottom: 2vh;
+}
+
+.banner-safaris {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 5vh, repeat(2, 1fr);
+    justify-items: center;
+    background-color: $main;
+    padding: 0 0 2vh 0;
+    margin-bottom: 3vh;
+    .tit-fotos-safari {
+        grid-column: 1/5;
+        padding: 2vh 0 0 0;
+        h2 {
+            color: $white;
+            @include mixins.h2;
+        }
+    }
+    .div-fotos-cabanas {
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        text-align: center;
+        img {
+            width: 100%;
+            height: auto;
+            padding-top: 2vh;
+        }
+        h5 {
+            @include mixins.h3;
+            color: $white;
+            padding-top: 1vh;
+        }
+        p {
+            @include mixins.mini-p;
+            text-align: center;
+            align-items: center;
+        }
+    }
+}
+
+.banner-safaris-mobile {
+    display: none;
+}
+
+.banner-ancestral {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 30vh 30vh;
+    margin-bottom: 3vh;
+    .foto-ancestral-mobile {
+        display: none;
+    }
+    .tit-fotos-ancestral {
+        grid-column: 1/5;
+        grid-row: 1/2;
+        justify-self: center;
+        padding-bottom: 2vh;
+        h2 {
+            color: $main;
+            @include mixins.h2;
+        }
+    }
+    .img-ancestral-cabana {
+        grid-column: 1/2;
+        grid-row: 2/4;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .tit-ancestral-cabana {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        font-weight: 800;
+        align-self: end;
+        p {
+            text-align: center;
+            color: $third;
+            @include mixins.h3;
+        }
+    }
+    .text-ancestral-cabana {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        p {
+            text-align: center;
+            @include mixins.p;
+        }
+    }
+}
+
+/* ACTIVIDADES */
+
+.tit-deportes {
+    text-align: center;
+    font-size: 5rem;
+    color: $main;
+    padding-top: 3.5vh;
+}
+
+.text-deportes {
+    font-size: 1.5rem;
+    color: $third;
+    text-align: center;
+}
+
+.sec-deportes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    @include mixins.regular;
+    gap: 2vw;
+    padding: 2vw;
+    div {
+        text-align: center;
+        img {
+            height: 100%;
+            object-fit: contain;
+            width: 22vw;
+
+        }
+        h5 {
+            color: $main;
+            @include mixins.black;
+            font-size: 2rem;
+            padding-top: 15px;
+        }
+        .precio {
+            font-size: 1.1rem;
+        }
+        .descripcion {
+            font-size: 1.3;
+        }
+    }
+}
