@@ -1,6 +1,10 @@
+import NuestrasCabanas from "../Components/NuestrasCabanas"
+
 const QuienesSomosView = () => {
   return (
-    <div>QuienesSomosView</div>
+    <>
+      <NuestrasCabanas/>
+    </>
   )
 }
 

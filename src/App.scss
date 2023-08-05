@@ -11,6 +11,12 @@
     }
 }
 
+.page {
+    width: 100%;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+}
+
 .footer {
   width: 100%;
   text-align: center;
@@ -89,6 +95,13 @@
   .booking {
       align-content: baseline;
       justify-content: center;
+      .form-group {
+        .form-floating {
+            .DatePicker {
+                padding-right: 20px;
+            }
+        }
+      }
   }
 }
 
@@ -369,5 +382,97 @@
         .descripcion {
             font-size: 1.3;
         }
+    }
+}
+
+/* QUIENES SOMOS */
+
+.img-somos {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+}
+
+.banner-somos {
+    display: flex;
+    flex-direction: column;
+    .tit-somos {
+        color: $main;
+        position: relative;
+        @include mixins.h1;
+    }
+    .psomos {
+        width: 80vw;
+        align-self: center;
+        text-align: center;
+        @include mixins.p;
+    }
+}
+
+.nuestras-somos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    padding: 2vh 0 4vh 0;
+    .img-somos2 {
+        align-self: flex-end;
+        grid-row: 1/4;
+        border: 2em solid;
+        border-color: $main;
+        margin: 0 0 0 2vw;
+        .img-somoss2 {
+            width: 100%;
+            height: 80vh;
+        }
+    }
+    .div-tit-banner-cabanas {
+        align-self: self-end;
+        .tit-banner-cabanas {
+            @include mixins.h2;
+            color: $third;
+        }
+    }
+    .div-parrafo-banner {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        .parrafo-banner {
+            width: 40vw;
+            text-align: center;
+            @include mixins.mini-p;
+        }
+    }
+    .boton-somos {
+        border: 0.1em solid;
+        display: inline-block;
+        text-align: center;
+        font-size: 1rem;
+        width: auto;
+    }
+    a {
+        text-decoration: none;
+        color: $black;
+        @include mixins.bold;
+    }
+}
+
+/* CONTACTO */
+
+.titulo-form {
+    text-align: center;
+    @include mixins.h1;
+    color: $main;
+}
+
+.grid-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    @include mixins.p;
+    a {
+        text-decoration: none;
+        color: $black;
     }
 }

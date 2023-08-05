@@ -2,6 +2,7 @@ import itemData from '../assets/cabanas.json';
 import ImageList from './ImageList';
 
 const BannerCabanas = () => {
+  
   return (
     <>
       <h1 className="tit-cabana-page">NUESTRAS CABAÑAS</h1>
@@ -14,17 +15,6 @@ const BannerCabanas = () => {
           <div className="tit-fotos-safari">
             <h2>CABAÑAS SAFARIS</h2>
           </div>
-            {/* {itemData.map((item) => {
-              return (
-                <div className="div-fotos-cabanas" key={item.name}>
-                <div>
-                  <img src={item.img} alt={item.name} />
-                  <h5>{item.name}</h5>
-                  <p>{item.description}</p>
-                </div>
-                </div>
-              );
-            })} */}
             <ImageList fotos = {itemData}/>
         </div>
       </section>

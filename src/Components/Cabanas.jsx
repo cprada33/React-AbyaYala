@@ -1,5 +1,12 @@
+import { useLocation } from "react-router-dom";
+
 const Cabanas = () => {
-  return (
+    const location = useLocation();
+    console.log(location)
+    const renderHome = location.pathname === '/';
+    console.log(renderHome)
+
+    return (
     <>
         <section className="secCabanas">
 <div className="tit-ancestral">
@@ -20,6 +27,7 @@ const Cabanas = () => {
 <div className="pr-safari">
     <h2 className="precio">420.000 COP</h2>
 </div>
+{ renderHome &&
 <div className="incluye">
     <p className="incluye-titulo">Incluye</p>
     <p>⛺️ Alojamiento</p>
@@ -29,6 +37,7 @@ const Cabanas = () => {
     <p>*Cabaña Ancestral tiene baño particular.</p>
     <p className="incluye-cierre">Todo para dos personas.</p>
 </div>
+}
 </section>
     </>
   )
