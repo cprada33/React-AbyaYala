@@ -1,6 +1,8 @@
 [
     {
       "img": "src/assets/imgs/kashi.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "KASHI",
       "description": "\"Luna\" en los pueblos Wayuu.",
       "section": "div-fotos-cabanas"
@@ -8,43 +10,84 @@
 
     {
       "img": "src/assets/imgs/kogui.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "KOGUI",
       "description": "Comunidad ancestral de la Sierra nevada de Santa marta."
     },
 
     {
       "img": "src/assets/imgs/kombilesa.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "KOMBILESA",
       "description": "\"Amigo\" en lengúa palenquera."
     },
 
     {
       "img": "src/assets/imgs/maleiwa.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "MALEIWA",
       "description": "Dios creador Wayuu."
     },
 
     {
       "img": "src/assets/imgs/ochun.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "OCHUN",
       "description": "Reina del agua."
     },
 
     {
       "img": "src/assets/imgs/pangea.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "PANGEA",
       "description": "Nombre del continente raíz."
     },
 
     {
       "img": "src/assets/imgs/polekakasue.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "POLEKA KASUE",
-      "description": "Nombre ancestral del nevado Santa Isabel."
+      "pick": true,
+      "description": "Nombre ancestral del nevado Santa Isabel.",
+      "detalles": [
+        "🛏️ Cama doble",
+        "🛁 Baño compartido",
+        "🍳 Desayuno incluido",
+        "🧖🏻 Toallas",
+        "👩🏿‍🤝‍👨🏻 2 personas.",
+        "💵 Precio: 320.000"
+      ]
     },
 
     {
       "img": "src/assets/imgs/serankua.jpg",
+      "tipo": "Safari",
+      "titulo": "CABAÑA SAFARI",
       "name": "SERANKUA",
       "description": "Dios creador y sol de la Sierra Nevada de Santa Marta."
+    },
+
+    {
+      "img": "src/assets/imgs/ancestral.jpeg",
+      "tipo": "Ancestral",
+      "titulo": "CABAÑA ANCESTRAL",
+      "name": "AWÁ KWAIKER",
+      "pick": true,
+      "description": "Pueblo Indio Americano, que en lengua Awapit significa 'Gente de la montaña'.",
+      "detalles": [
+        "🛏️ Cama doble y habitación deluxe",
+        "🛁 Baño privado",
+        "🍳 Desayuno incluido",
+        "🧖🏻 Toallas",
+        "👩🏿‍🤝‍👨🏻 2 personas.",
+        "🏞️ Vista a la montaña.",
+        "💵 Precio: 420.000"
+      ]
     }
 ]

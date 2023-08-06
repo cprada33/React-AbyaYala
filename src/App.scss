@@ -476,3 +476,63 @@
         color: $black;
     }
 }
+
+// DISPONIBILIDAD 
+
+.cardCabanas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    .card-img {
+        object-fit: cover;
+        height: 600px;
+        grid-row: 1/6;
+        padding: 40px 0 0 60px; 
+    }
+    div {
+        height: auto;
+    }
+    .parent-titulo-reserva {
+        grid-row: 2/3;
+        h2 {
+            @include mixins.h2;
+            font-size: 4rem;
+            color: $second;
+            text-align: center;
+        }
+    }
+    .detalles {
+        height: auto;
+        text-align: center;
+        @include mixins.mini-p;
+        grid-row: 3/4;
+        padding-top: 20px;
+    }
+    .seleccionCabanas {
+        grid-row: 4/5;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        .disponibilidad {
+            justify-self: end;
+            padding-top: 8px;
+        }
+        .cantidadCabanas {
+            justify-self: start;
+            padding-left: 20px;
+        }
+        .botonReservar {
+            grid-column: 1/3;
+            text-align: center;
+            padding-top: 20px;
+            .btn {
+            background-color: $third;
+            border-color: $third;
+            }
+        }
+    }
+}
+
+.cardCabanas.ancestral {
+    padding-bottom: 50px;
+}

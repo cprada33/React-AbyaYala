@@ -1,8 +1,10 @@
-import itemData from '../assets/cabanas.json';
-import ImageList from './ImageList';
+import itemData from "../assets/cabanas.json";
+import ImageList from "./ImageList";
 
 const BannerCabanas = () => {
-  
+
+  const cabanasFilter = itemData.filter((itemData) => itemData.tipo === 'Safari')
+
   return (
     <>
       <h1 className="tit-cabana-page">NUESTRAS CABAÑAS</h1>
@@ -15,7 +17,7 @@ const BannerCabanas = () => {
           <div className="tit-fotos-safari">
             <h2>CABAÑAS SAFARIS</h2>
           </div>
-            <ImageList fotos = {itemData}/>
+          <ImageList fotos={cabanasFilter} />
         </div>
       </section>
       <section>
@@ -31,8 +33,8 @@ const BannerCabanas = () => {
           </div>
           <div className="text-ancestral-cabana">
             <p>
-              Pueblo Indio Americano, que en lengua Awapit significa &quot;Gente de
-              la montaña&quot;.
+              Pueblo Indio Americano, que en lengua Awapit significa &quot;Gente
+              de la montaña&quot;.
             </p>
           </div>
         </div>

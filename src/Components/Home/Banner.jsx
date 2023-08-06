@@ -3,11 +3,17 @@ import { DateBooking } from "../../Context/DateContext";
 import { DatePicker } from "@mui/x-date-pickers";
 import { Button } from "@mui/material";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
   const { CheckInDate, setCheckInDate, setCheckOutDate } =
-  useContext(DateBooking);
-  console.log(CheckInDate);
+    useContext(DateBooking);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate("/booking");
+  };
 
   return (
     <>
@@ -33,7 +39,10 @@ const Banner = () => {
           </p>
         </div>
 
-        <form className="booking row row-cols-lg-auto g-3 align-items-center">
+        <form
+          className="booking row row-cols-lg-auto g-3 align-items-center"
+          onSubmit={handleSubmit}
+        >
           <div className="form-group">
             <div className="form-floating"></div>
           </div>
@@ -47,12 +56,11 @@ const Banner = () => {
               />
               <DatePicker
                 label="Check out"
-                minDate={CheckInDate.add(1, 'day')}
+                minDate={CheckInDate.add(1, "day")}
                 onChange={(newValue) => setCheckOutDate(newValue)}
               />
             </div>
           </div>
-
           <div className="col-12">
             <Button type="submit" variant="contained">
               Ver disponibilidad

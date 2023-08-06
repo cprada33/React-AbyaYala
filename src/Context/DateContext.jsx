@@ -1,24 +1,24 @@
 import { createContext, useState } from "react";
 export const DateBooking = createContext(null);
-import dayjs from 'dayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
+const DateContext = ({ children }) => {
+  const [CheckInDate, setCheckInDate] = useState(dayjs());
+  const [CheckOutDate, setCheckOutDate] = useState(null);
 
-const DateContext = ({children}) => {
-    const [CheckInDate, setCheckInDate] = useState(dayjs());
-    const [CheckOutDate, setCheckOutDate] = useState(null);
-
-
-    return (
+  return (
     <>
-        <DateBooking.Provider value = {{CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate}}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                {children}
-            </LocalizationProvider>
-        </DateBooking.Provider>
+      <DateBooking.Provider
+        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate }}
+      >
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          {children}
+        </LocalizationProvider>
+      </DateBooking.Provider>
     </>
-  )
-}
+  );
+};
 
-export default DateContext
+export default DateContext;

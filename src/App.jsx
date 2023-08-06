@@ -9,6 +9,7 @@ import ContactoView from "./Views/ContactoView";
 import QuienesSomosView from "./Views/QuienesSomosView";
 import CabanasView from "./Views/CabanasView";
 import DateContext from "./Context/DateContext";
+import PickCabanaView from "./Views/PickCabanaView";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/cabanas" element={<CabanasView />}></Route>
               <Route path="/nosotros" element={<QuienesSomosView />}></Route>
               <Route path="/contacto" element={<ContactoView />}></Route>
+              <Route path="/booking" element={<PickCabanaView/>}></Route>
             </Routes>
             <Footer />
           </BrowserRouter>
