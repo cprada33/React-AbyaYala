@@ -10,6 +10,8 @@ import QuienesSomosView from "./Views/QuienesSomosView";
 import CabanasView from "./Views/CabanasView";
 import DateContext from "./Context/DateContext";
 import PickCabanaView from "./Views/PickCabanaView";
+import DatosReservaView from "./Views/DatosReservaView";
+import ConfirmacionDeReservaView from "./Views/ConfirmacionDeReservaView";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route path="/nosotros" element={<QuienesSomosView />}></Route>
               <Route path="/contacto" element={<ContactoView />}></Route>
               <Route path="/booking" element={<PickCabanaView/>}></Route>
+              <Route path="/booking/datos_de_reserva" element={<DatosReservaView/>}></Route>
+              <Route path="/booking/confirmacion_de_reserva" element={<ConfirmacionDeReservaView/>}></Route>
             </Routes>
             <Footer />
           </BrowserRouter>

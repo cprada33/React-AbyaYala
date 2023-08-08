@@ -7,11 +7,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 const DateContext = ({ children }) => {
   const [CheckInDate, setCheckInDate] = useState(dayjs());
   const [CheckOutDate, setCheckOutDate] = useState(null);
+  let [NumeroCabanas, setNumeroCabanas] = useState(0);
 
   return (
     <>
       <DateBooking.Provider
-        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate }}
+        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate, NumeroCabanas, setNumeroCabanas }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           {children}

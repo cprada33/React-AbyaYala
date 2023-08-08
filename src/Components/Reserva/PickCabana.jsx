@@ -1,5 +1,14 @@
-const PickCabana = ({cabana}) => {
+import { Button } from "@mui/material";
+import { useContext } from "react";
+import { DateBooking } from "../../Context/DateContext";
+import { useNavigate } from "react-router-dom";
 
+const PickCabana = ({ cabana }) => {
+  const { NumeroCabanas, setNumeroCabanas } = useContext(DateBooking);
+  const navigate = useNavigate();
+  const handleButtonPick = () => {
+    navigate("/booking/datos_de_reserva")
+  }
   return (
     <>
       <div className="cardCabanas safari">
@@ -8,54 +17,35 @@ const PickCabana = ({cabana}) => {
           <h2 className="titulo-reserva">{cabana.titulo}</h2>
         </div>
         <div className="detalles">
-              {cabana.detalles.map((detalle) => { 
-                return (
-                <p key={detalle}>{detalle}</p>
-                );
-              })}
-            </div>
+          {cabana.detalles.map((detalle) => {
+            return <p key={detalle}>{detalle}</p>;
+          })}
+        </div>
         <div className="seleccionCabanas">
-          <p className="disponibilidad" id="disponibilidad-safari"></p>
-          <div className="cantidadCabanas"> 
-            <select
-              id="cantidadDeCabanasSafari"
-              className="form-select"
-              aria-label="Habitaciones"
-            >
-              <option id="option1" value="1">
-                1
-              </option>
-              <option id="option2" value="2">
-                2
-              </option>
-              <option id="option3" value="3">
-                3
-              </option>
-              <option id="option4" value="4">
-                4
-              </option>
-              <option id="option5" value="5">
-                5
-              </option>
-              <option id="option6" value="6">
-                6
-              </option>
-              <option id="option7" value="7">
-                7
-              </option>
-              <option id="option8" value="8">
-                8
-              </option>
-            </select>
-          </div>
+          <p className="disponibilidad">Cabañas disponibles:</p>
+          <Button
+            className="btnMas"
+            variant="outlined"
+            onClick={
+              NumeroCabanas > 0
+                ? () => setNumeroCabanas(NumeroCabanas - 1)
+                : null
+            }
+          >
+            -
+          </Button>
+          <h5 className="NumeroCabanas">{NumeroCabanas}</h5>
+          <Button
+            className="btnMenos"
+            variant="outlined"
+            onClick={() => setNumeroCabanas(NumeroCabanas + 1)}
+          >
+            +
+          </Button>
           <div className="botonReservar col-12">
-            <button
-              id="reservar-safari"
-              type="submit"
-              className="btn btn-primary"
-            >
+            <Button className="btn" type="submit" variant="contained" onClick={handleButtonPick}>
               Reservar
-            </button>
+            </Button>
           </div>
         </div>
       </div>

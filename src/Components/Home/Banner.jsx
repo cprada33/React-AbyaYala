@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DateBooking } from "../../Context/DateContext";
 import { DatePicker } from "@mui/x-date-pickers";
 import { Button } from "@mui/material";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const Banner = () => {
   const { CheckInDate, setCheckInDate, setCheckOutDate } =
     useContext(DateBooking);
+  const [InputIn, setInputIn] = useState(null);
+  const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -52,17 +54,17 @@ const Banner = () => {
                 className="DatePicker"
                 label="Check in"
                 minDate={dayjs()}
-                onChange={(newValue) => setCheckInDate(newValue)}
+                onChange={(newValue) => {setCheckInDate(newValue); setInputIn(newValue)}}
               />
               <DatePicker
                 label="Check out"
                 minDate={CheckInDate.add(1, "day")}
-                onChange={(newValue) => setCheckOutDate(newValue)}
+                onChange={(newValue) => {setCheckOutDate(newValue); setInputOut(newValue)}}
               />
             </div>
           </div>
           <div className="col-12">
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" disabled={!(InputIn && InputOut)}>
               Ver disponibilidad
             </Button>
           </div>
