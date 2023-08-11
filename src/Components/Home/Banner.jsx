@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DateBooking } from "../../Context/DateContext";
 import { DatePicker } from "@mui/x-date-pickers";
 import { Button } from "@mui/material";
@@ -6,14 +6,47 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
-  const { CheckInDate, setCheckInDate, setCheckOutDate } =
-    useContext(DateBooking);
+  const {
+    CheckInDate,
+    setCheckInDate,
+    setCheckOutDate,
+    setReservasAncestral,
+    setReservasSafari,
+    setRangeDates,
+    CheckOutDate,
+  } = useContext(DateBooking);
   const [InputIn, setInputIn] = useState(null);
   const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    fetch("http://localhost:3000/datos2")
+      .then((response) => response.json())
+      .then((data) => {
+        setReservasAncestral(data);
+      });
+  }, [setReservasAncestral]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/datos")
+      .then((response) => response.json())
+      .then((data) => {
+        setReservasSafari(data);
+      });
+  }, [setReservasSafari]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const dates = [];
+    let currentDate = new Date(CheckInDate);
+
+    while (currentDate < CheckOutDate) {
+      dates.push(currentDate.toISOString().slice(0, 10));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    setRangeDates(dates);
+    
     navigate("/booking");
   };
 
@@ -54,17 +87,27 @@ const Banner = () => {
                 className="DatePicker"
                 label="Check in"
                 minDate={dayjs()}
-                onChange={(newValue) => {setCheckInDate(newValue); setInputIn(newValue)}}
+                onChange={(newValue) => {
+                  setCheckInDate(newValue);
+                  setInputIn(newValue);
+                }}
               />
               <DatePicker
                 label="Check out"
                 minDate={CheckInDate.add(1, "day")}
-                onChange={(newValue) => {setCheckOutDate(newValue); setInputOut(newValue)}}
+                onChange={(newValue) => {
+                  setCheckOutDate(newValue);
+                  setInputOut(newValue);
+                }}
               />
             </div>
           </div>
           <div className="col-12">
-            <Button type="submit" variant="contained" disabled={!(InputIn && InputOut)}>
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={!(InputIn && InputOut)}
+            >
               Ver disponibilidad
             </Button>
           </div>
