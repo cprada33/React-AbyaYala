@@ -609,6 +609,11 @@
         color: $main;
         padding-top: 40px;
     }
+    .codigoDeReserva{
+        text-align: center;
+        color: $main;
+        @include mixins.h2;
+    }
     .textoConfirmacion {
         @include mixins.p;
         text-align: center;

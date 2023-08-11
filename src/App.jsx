@@ -31,8 +31,8 @@ function App() {
               <Route path="/nosotros" element={<QuienesSomosView />}></Route>
               <Route path="/contacto" element={<ContactoView />}></Route>
               <Route path="/booking" element={<PickCabanaView/>}></Route>
-              <Route path="/booking/datos_de_reserva" element={<DatosReservaView/>}></Route>
-              <Route path="/booking/confirmacion_de_reserva" element={<ConfirmacionDeReservaView/>}></Route>
+              <Route path="/datos_de_reserva" element={<DatosReservaView/>}></Route>
+              <Route path="/confirmacion_de_reserva" element={<ConfirmacionDeReservaView/>}></Route>
             </Routes>
             <Footer />
           </BrowserRouter>

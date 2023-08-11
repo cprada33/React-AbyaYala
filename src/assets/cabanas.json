@@ -54,6 +54,9 @@
       "titulo": "CABAÑA SAFARI",
       "name": "POLEKA KASUE",
       "pick": true,
+      "cantidad": "8",
+      "precio": 320000,
+      "server": "http://localhost:3000/datos",
       "description": "Nombre ancestral del nevado Santa Isabel.",
       "detalles": [
         "🛏️ Cama doble",
@@ -79,6 +82,9 @@
       "titulo": "CABAÑA ANCESTRAL",
       "name": "AWÁ KWAIKER",
       "pick": true,
+      "cantidad": "1",
+      "precio": 420000,
+      "server": "http://localhost:3000/datos2",
       "description": "Pueblo Indio Americano, que en lengua Awapit significa 'Gente de la montaña'.",
       "detalles": [
         "🛏️ Cama doble y habitación deluxe",

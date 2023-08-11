@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { DateBooking } from "../../Context/DateContext";
 import { DatePicker } from "@mui/x-date-pickers";
 import { Button } from "@mui/material";
@@ -10,30 +10,13 @@ const Banner = () => {
     CheckInDate,
     setCheckInDate,
     setCheckOutDate,
-    setReservasAncestral,
-    setReservasSafari,
     setRangeDates,
     CheckOutDate,
+    setReservaRealizada
   } = useContext(DateBooking);
   const [InputIn, setInputIn] = useState(null);
   const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch("http://localhost:3000/datos2")
-      .then((response) => response.json())
-      .then((data) => {
-        setReservasAncestral(data);
-      });
-  }, [setReservasAncestral]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/datos")
-      .then((response) => response.json())
-      .then((data) => {
-        setReservasSafari(data);
-      });
-  }, [setReservasSafari]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +29,7 @@ const Banner = () => {
       currentDate.setDate(currentDate.getDate() + 1);
     }
     setRangeDates(dates);
-    
+    setReservaRealizada(false);
     navigate("/booking");
   };
 

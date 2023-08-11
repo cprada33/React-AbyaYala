@@ -2,13 +2,44 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { DateBooking } from "../../Context/DateContext";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const PickCabana = ({ cabana }) => {
-  const { NumeroCabanas, setNumeroCabanas } = useContext(DateBooking);
+  const { RangeDates, setBookingRooms, setTipoDeCabaña, setPrecioCabana, setCabanaServer } = useContext(DateBooking);
+  let [NumeroCabanas, setNumeroCabanas] = useState(0);
+  let [disponibilidad, setDisponiblidad] = useState(cabana.cantidad);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(cabana.server)
+      .then((response) => response.json())
+      .then((data) => {
+        let ocupadas = 0;
+        for (const element of RangeDates) {
+
+          const ocurrences = data.filter(
+            (item) => item === element
+          ).length;
+          ocupadas += ocurrences;
+        }
+        setDisponiblidad(cabana.cantidad - ocupadas)
+      })
+  }, [
+    cabana.server,
+    RangeDates,
+    disponibilidad,
+    cabana.cantidad
+  ]);
+
+  console.log(disponibilidad)
+
   const handleButtonPick = () => {
-    navigate("/booking/datos_de_reserva")
-  }
+    setBookingRooms(NumeroCabanas)
+    setTipoDeCabaña(cabana.tipo)
+    setPrecioCabana((cabana.precio * NumeroCabanas * RangeDates.length).toLocaleString())
+    setCabanaServer(cabana.server)
+    navigate("/datos_de_reserva");
+  };
   return (
     <>
       <div className="cardCabanas safari">
@@ -22,7 +53,7 @@ const PickCabana = ({ cabana }) => {
           })}
         </div>
         <div className="seleccionCabanas">
-          <p className="disponibilidad">Cabañas disponibles:</p>
+          <p className="disponibilidad">{disponibilidad > 0 ? `Cabañas disponibles: ${disponibilidad}` : <p> No hay disponible </p>}</p>
           <Button
             className="btnMas"
             variant="outlined"
@@ -38,12 +69,18 @@ const PickCabana = ({ cabana }) => {
           <Button
             className="btnMenos"
             variant="outlined"
-            onClick={() => setNumeroCabanas(NumeroCabanas + 1)}
+            onClick={ NumeroCabanas < disponibilidad ? () => setNumeroCabanas(NumeroCabanas + 1) : null}
           >
             +
           </Button>
           <div className="botonReservar col-12">
-            <Button className="btn" type="submit" variant="contained" onClick={handleButtonPick}>
+            <Button
+              className="btn"
+              type="submit"
+              variant="contained"
+              onClick={handleButtonPick}
+              disabled={disponibilidad <= 0 || NumeroCabanas === 0}
+            >
               Reservar
             </Button>
           </div>

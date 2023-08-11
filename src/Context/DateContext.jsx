@@ -9,20 +9,16 @@ const DateContext = ({ children }) => {
   const [CheckInDate, setCheckInDate] = useState(dayjs());
   const [CheckOutDate, setCheckOutDate] = useState(null);
   const [RangeDates, setRangeDates] = useState(null);
-  const [ReservasSafari, setReservasSafari] = useState([]); // BASE DE DATOS
-  const [ReservasAncestral, setReservasAncestral] = useState([]); // BASE DE DATOS
-
-  // PICK CABAÑAS
-  let [NumeroCabanasSafari, setNumeroCabanasSafari] = useState(0);
-  let [NumeroCabanasAncestral, setNumeroCabanasAncestral] = useState(0);
-  const [disponibilidadSafari, setDisponibilidadSafari] = useState(8);
-  const [disponibilidadAncestral, setDisponiblidadAncestral] = useState(1);
-
+  const [BookingRooms, setBookingRooms] = useState(0);
+  const [TipoDeCabaña, setTipoDeCabaña] = useState(null);
+  const [PrecioCabana, setPrecioCabana] = useState(null);
+  const [CabanaServer, setCabanaServer] = useState(null);
+  const [ReservaRealizada, setReservaRealizada] = useState(false);
 
   return (
     <>
       <DateBooking.Provider
-        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate, NumeroCabanasSafari, setNumeroCabanasSafari, NumeroCabanasAncestral, setNumeroCabanasAncestral, ReservasSafari, setReservasSafari, ReservasAncestral, setReservasAncestral, disponibilidadSafari, setDisponibilidadSafari, disponibilidadAncestral, setDisponiblidadAncestral, RangeDates, setRangeDates }}
+        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate, RangeDates, setRangeDates, BookingRooms, setBookingRooms, TipoDeCabaña, setTipoDeCabaña, PrecioCabana, setPrecioCabana, CabanaServer, setCabanaServer, setReservaRealizada, ReservaRealizada }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           {children}

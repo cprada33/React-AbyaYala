@@ -1,5 +1,4 @@
 const ImageItem = ({ fotos }) => {
-
   return (
     <>
       <div className={fotos.div}>
