@@ -14,6 +14,7 @@ const Banner = () => {
     CheckOutDate,
     setReservaRealizada
   } = useContext(DateBooking);
+  
   const [InputIn, setInputIn] = useState(null);
   const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();

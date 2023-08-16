@@ -9,6 +9,15 @@
     h1 {
         @include mixins.black;
     }
+    .titulo {
+        @include mixins.h1;
+        color: $main;
+        text-align: center;
+    }
+    .link {
+        text-decoration: none; /* Elimina el subrayado */
+        color: inherit; /* Usa el color heredado */
+      }
 }
 
 .page {
@@ -635,3 +644,58 @@
         margin: auto;
     }
 }
+
+// RESERVAS SECTION
+
+.reservasSection {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(auto, auto);
+    row-gap: 40px;
+    justify-content:space-around;
+    padding-bottom: 40px;
+}
+
+// RESERVA DETAIL
+
+.codeReserva {
+    text-align: center;
+    color: $second;
+    font-size: 4rem;
+    @include mixins.black;
+}
+.tituloReservas {
+    padding-top: 40px;
+    text-align: center;
+    color: $main;
+    font-size: 4rem;
+}
+.reservaContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 40px;
+    .labelColumn {
+        display: flex;
+        flex-direction: column;
+        background-color: $third;
+        border: solid 4px $third;
+    }
+    .inputColumn {
+        display: flex;
+        flex-direction: column;
+        border: solid 8px $third;
+    }
+    .label {
+        text-align: end;
+        padding: 20px 10px 20px 0;
+        @include mixins.semibold;
+    }
+    .input {
+        border: none;
+        margin: 20px 0 20px 40px;
+        padding: 0 0;
+
+    }
+  }
+
+

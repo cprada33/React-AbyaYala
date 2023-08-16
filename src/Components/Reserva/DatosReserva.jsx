@@ -15,6 +15,11 @@ const DatosReserva = () => {
     setReservaRealizada,
     ReservaRealizada,
   } = useContext(DateBooking);
+
+  // useEffect(()=>{
+
+  // }, [setCheckInDate, CheckInDate, setCheckOutDate, CheckOutDate])
+
   const [Nombre, setNombre] = useState("");
   const [Celular, setCelular] = useState("");
   const [Correo, setCorreo] = useState("");
@@ -93,8 +98,8 @@ const DatosReserva = () => {
         CheckOutDate,
         InfoAcompanantes,
         PrecioCabana,
+        TipoDeCabaña,
       };
-
       const requestOptions = {
         method: "POST",
         headers: {
@@ -133,7 +138,7 @@ const DatosReserva = () => {
     }
   };
 
-  console.log(invoice);
+  console.log(CheckInDate);
 
   return (
     <>

@@ -7,7 +7,6 @@ const Confirmacion = () => {
     fetch('http://localhost:3000/datos5')
       .then(response => response.json())
       .then(data => {
-        // const idOriginal = data;
         setIdReserva(data);
       })
       .catch(error => {

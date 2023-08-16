@@ -12,6 +12,8 @@ import DateContext from "./Context/DateContext";
 import PickCabanaView from "./Views/PickCabanaView";
 import DatosReservaView from "./Views/DatosReservaView";
 import ConfirmacionDeReservaView from "./Views/ConfirmacionDeReservaView";
+import ReservasView from "./Views/ReservasView";
+import ReservaDetailView from "./Views/ReservaDetailView";
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
               <Route path="/booking" element={<PickCabanaView/>}></Route>
               <Route path="/datos_de_reserva" element={<DatosReservaView/>}></Route>
               <Route path="/confirmacion_de_reserva" element={<ConfirmacionDeReservaView/>}></Route>
+              <Route path="/reservas" element={<ReservasView/>}></Route>
+              <Route path="/reservas/:idreserva" element={<ReservaDetailView/>}></Route>
             </Routes>
             <Footer />
           </BrowserRouter>
