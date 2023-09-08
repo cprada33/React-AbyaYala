@@ -88,7 +88,7 @@ exports.sendEmail = onCall((request) => {
   }
 });
 
-const serviceAccount = require('abyayala-b1aa68ab1c38.json');
+const serviceAccount = require('key.env');
 
 // Autenticación utilizando la clave de la cuenta de servicio
 const auth = new google.auth.GoogleAuth({
