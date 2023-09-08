@@ -1,4 +1,8 @@
+import { useLocation } from "react-router-dom";
+
 const ImageItem = ({ fotos }) => {
+  const location = useLocation();
+  const renderCabanasView = location.pathname === "/booking";
   return (
     <>
       <div className={fotos.div}>
@@ -7,7 +11,7 @@ const ImageItem = ({ fotos }) => {
         {fotos.description && (
           <p className="descripcion">{fotos.description}</p>
         )}
-        {fotos.precio && <p className="precio">{fotos.precio}</p>}
+        {renderCabanasView && <p className="precio">{fotos.precio}</p>}
       </div>
     </>
   );

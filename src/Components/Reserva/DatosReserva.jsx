@@ -1,7 +1,20 @@
-import { useContext, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { DateBooking } from "../../Context/DateContext";
+import { useContext, useState, useEffect } from 'react';
+import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { DateBooking } from '../../Context/DateContext';
+import {
+  setDoc,
+  doc,
+  collection,
+  getDocs,
+  query,
+  limit,
+  orderBy,
+} from 'firebase/firestore';
+import { db } from '../../../Firebase/firebase.config';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import dayjs from 'dayjs';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const DatosReserva = () => {
   const {
@@ -11,23 +24,24 @@ const DatosReserva = () => {
     CheckOutDate,
     PrecioCabana,
     RangeDates,
-    CabanaServer,
     setReservaRealizada,
     ReservaRealizada,
+    setIdReserva,
+    idReserva,
+    Nombre,
+    setNombre,
   } = useContext(DateBooking);
 
-  // useEffect(()=>{
+  console.log('RANGO', RangeDates);
 
-  // }, [setCheckInDate, CheckInDate, setCheckOutDate, CheckOutDate])
-
-  const [Nombre, setNombre] = useState("");
-  const [Celular, setCelular] = useState("");
-  const [Correo, setCorreo] = useState("");
-  const [Cedula, setCedula] = useState("");
-  const [NumeroAcompanantes, setNumeroAcompanantes] = useState("");
-  const [InfoAcompanantes, setInfoAcompanantes] = useState("");
+  const [Celular, setCelular] = useState('');
+  const [Correo, setCorreo] = useState('');
+  const [Cedula, setCedula] = useState('');
+  const [NumeroAcompanantes, setNumeroAcompanantes] = useState('');
+  const [InfoAcompanantes, setInfoAcompanantes] = useState('');
   const [FaltanDatos, setFaltanDatos] = useState(null);
   const [invoice, setInvoice] = useState(null);
+  const [urlInvoice, setUrlInvoice] = useState(null);
 
   const navigate = useNavigate();
 
@@ -38,15 +52,165 @@ const DatosReserva = () => {
       options.push(
         <option key={i} value={i}>
           {i}
-        </option>
+        </option>,
       );
     }
 
-    return options
+    return options;
   };
+
+  useEffect(() => {
+    if (idReserva === '') {
+      return;
+    } else {
+      for (let i = 0; i < BookingRooms; i++) {
+        // const requestOptions = {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ RangeDates }),
+        // };
+        // fetch(CabanaServer, requestOptions)
+        //   .then((response) => {
+        //     console.log("Respuesta del servidor:", response);
+
+        //     if (!response.ok) {
+        //       throw new Error("Error en la solicitud POST");
+        //     }
+        //     return response.json();
+        //   })
+        //   .then((data) => {
+        //     console.log("Datos insertados correctamente:", data);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error en la solicitud POST:", error);
+        //   });
+        let n = 0;
+        for (const element of RangeDates) {
+          setDoc(doc(db, 'reservadas', `${idReserva + n.toString() + i}`), {
+            cabaña: TipoDeCabaña,
+            fecha: element,
+          });
+          n++;
+        }
+      }
+
+      const infoEmail = {
+        Nombre,
+        BookingRooms,
+        Correo,
+        NumeroAcompanantes,
+        CheckInDate: CheckInDate.toISOString().slice(0, 10),
+        CheckOutDate: CheckOutDate.toISOString().slice(0, 10),
+        PrecioCabana,
+        TipoDeCabaña,
+        subject: 'Confirmación de reserva',
+      };
+
+      const functions = getFunctions();
+      const sendEmail = httpsCallable(functions, 'sendEmail');
+      sendEmail({ infoEmail, secret: 'SendThisEmail' }).then((result) => {
+        // Read result of the Cloud Function.
+        /** @type {any} */
+        console.log(result.data);
+      });
+
+      // const sendEmail = fetch("/SendEmail", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ infoReserva, secret: "SendThisEmail" }),
+      // });
+
+      setDoc(doc(db, 'reservas', `${'ABYA' + idReserva}`), {
+        idReserva: idReserva,
+        Nombre: Nombre,
+        Celular: Celular,
+        Correo: Correo,
+        Cédula: Cedula,
+        'Cantidad de cabañas': BookingRooms,
+        'Cantidad de huespedes': NumeroAcompanantes,
+        'Check in': CheckInDate.toISOString().slice(0, 10),
+        'Check out': CheckOutDate.toISOString().slice(0, 10),
+        'Información de acompañantes': InfoAcompanantes,
+        Valor: PrecioCabana,
+        'Tipo de cabaña': TipoDeCabaña,
+        timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+        urlInvoice: urlInvoice,
+      }).then(() => {
+        setReservaRealizada(true);
+        navigate('/confirmacion_de_reserva');
+      });
+
+      // fetch("http://localhost:3000/datos4", requestOptions)
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Error en la solicitud POST");
+      //     }
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     setIdReserva(data);
+      //     let description = `www.abyayalahostel.com/reservas/${data.slice(4)}`;
+      //     const event = {
+      //       RangeDates,
+      //       description,
+      //       BookingRooms,
+      //       Nombre,
+      //       TipoDeCabaña,
+      //     };
+
+      //     fetch("http://localhost:3000/crear-evento", {
+      //       method: "POST",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify(event),
+      //     }).then(function (response) {
+      //       if (response.ok) {
+      //         console.log("Evento creado");
+      //       }
+      //     });
+
+      // fetch("http://localhost:3000/send-email", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     Correo,
+      //     subject,
+      //     Nombre,
+      //     BookingRooms,
+      //     CheckInDate,
+      //     CheckOutDate,
+      //     TipoDeCabaña,
+      //   }),
+      // });
+
+      // let description = `www.abyayalahostel.com/reservas/ABYA${idReserva}`;
+      // const infoEvent = {
+      //   RangeDates,
+      //   BookingRooms,
+      //   Nombre,
+      //   TipoDeCabaña,
+      //   description,
+      // };
+      // const sendCalendar = httpsCallable(functions, 'sendCalendar');
+      // sendCalendar({ infoEvent }).then((result) => {
+      //   // Read result of the Cloud Function.
+      //   /** @type {any} */
+      //   console.log(result.data);
+      // });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlInvoice]);
 
   const handleSubmitDatos = (event) => {
     event.preventDefault();
+
     if (
       !(
         Nombre &&
@@ -59,86 +223,57 @@ const DatosReserva = () => {
       )
     ) {
       setFaltanDatos(
-        "Para finalizar la reserva debes completar todos los campos."
+        'Para finalizar la reserva debes completar todos los campos.',
       );
     } else if (ReservaRealizada === true) {
-      navigate("/");
+      navigate('/');
     } else {
-      for (let i = 0; i < BookingRooms; i++) {
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ RangeDates }),
-        };
-        fetch(CabanaServer, requestOptions)
-          .then((response) => {
-            console.log("Respuesta del servidor:", response);
-
-            if (!response.ok) {
-              throw new Error("Error en la solicitud POST");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log("Datos insertados correctamente:", data);
-          })
-          .catch((error) => {
-            console.error("Error en la solicitud POST:", error);
-          });
-      }
-      const infoReserva = {
-        Nombre,
-        Celular,
-        Correo,
-        Cedula,
-        NumeroAcompanantes,
-        CheckInDate,
-        CheckOutDate,
-        InfoAcompanantes,
-        PrecioCabana,
-        TipoDeCabaña,
-      };
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const lookingId = collection(db, 'reservas');
+      getDocs(query(lookingId, orderBy('timestamp', 'desc'), limit(1))).then(
+        (datos) => {
+          const lastOne = datos.docs[0].data();
+          const nextId = parseInt(lastOne.idReserva) + 1;
+          setIdReserva(nextId);
         },
-        body: JSON.stringify({ infoReserva }),
-      };
+      );
 
-      fetch("http://localhost:3000/datos4", requestOptions)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Error en la solicitud POST");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Respuesta del servidor:", data);
+      //     const formData = new FormData();
+      //     formData.append("archivo", invoice);
+      //     formData.append("idReserva", data);
+
+      //     fetch("http://localhost:3000/files", {
+      //       method: "POST",
+      //       body: formData,
+      //     }).then(function (response) {
+      //       if (response.ok) {
+      //         console.log("Archivo subido");
+      //       }
+      //     });
+      //   });
+
+      const invoiceName = invoice.name;
+      const storage = getStorage();
+      const archivoRef = ref(storage, invoiceName);
+      uploadBytes(archivoRef, invoice)
+        .then((snapshot) => {
+          console.log('Archivo subido con éxito', snapshot);
+          getDownloadURL(archivoRef)
+            .then((url) => {
+              console.log(url);
+              setUrlInvoice(url);
+            })
+            .catch((error) => {
+              console.error(
+                'Error al obtener el enlace de acceso al archivo:',
+                error,
+              );
+            });
         })
         .catch((error) => {
-          console.error("Error en la solicitud POST:", error);
+          console.error('Error al subir el archivo', error);
         });
-
-      const formData = new FormData();
-      formData.append("archivo", invoice);
-      fetch("http://localhost:3000/files", {
-        method: "POST",
-        body: formData,
-      }).then(function (response) {
-        if (response.ok) {
-          console.log("Antes de");
-        }
-      });
-
-      setReservaRealizada(true);
-      navigate("/confirmacion_de_reserva");
     }
   };
-
-  console.log(CheckInDate);
 
   return (
     <>
@@ -193,7 +328,9 @@ const DatosReserva = () => {
                 defaultValue={'Seleccionar'}
                 onChange={(e) => setNumeroAcompanantes(e.target.value)}
               >
-                <option disabled value="Seleccionar">Seleccionar</option>
+                <option disabled value="Seleccionar">
+                  Seleccionar
+                </option>
                 {options()}
               </Form.Select>
             </Form.Group>
@@ -220,11 +357,11 @@ const DatosReserva = () => {
             </p>
             <p className="labeldatoInterno">FECHA CHECK IN: </p>
             <p className="datoInterno" id="fechaReservaIn">
-              {CheckInDate.format("DD-MM-YYYY")}
+              {CheckInDate.format('DD-MM-YYYY')}
             </p>
             <p className="labeldatoInterno">FECHA CHECK OUT: </p>
             <p className="datoInterno" id="fechaReservaOut">
-              {CheckOutDate.format("DD-MM-YYYY")}
+              {CheckOutDate.format('DD-MM-YYYY')}
             </p>
             <p className="labeldatoInterno">PRECIO TOTAL: </p>
             <p className="datoInterno" id="precioFinal">

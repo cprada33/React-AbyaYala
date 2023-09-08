@@ -3,41 +3,54 @@ import { useContext } from "react";
 import { DateBooking } from "../../Context/DateContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../../Firebase/firebase.config";
 
 const PickCabana = ({ cabana }) => {
-  const { RangeDates, setBookingRooms, setTipoDeCabaña, setPrecioCabana, setCabanaServer } = useContext(DateBooking);
+  const {
+    RangeDates,
+    setBookingRooms,
+    setTipoDeCabaña,
+    setPrecioCabana,
+  } = useContext(DateBooking);
   let [NumeroCabanas, setNumeroCabanas] = useState(0);
-  let [disponibilidad, setDisponiblidad] = useState(cabana.cantidad);
+  let [disponibilidad, setDisponiblidad] = useState('Cargando...');
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(cabana.server)
-      .then((response) => response.json())
-      .then((data) => {
-        let ocupadas = 0;
-        for (const element of RangeDates) {
-
-          const ocurrences = data.filter(
-            (item) => item === element
-          ).length;
-          ocupadas += ocurrences;
+    const reservadasCollection = collection(db, "reservadas");
+    getDocs(reservadasCollection).then((datos) => {
+      const docs = datos.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log('docs: ',docs)
+      const reservas = [];
+      for (const item of docs) {
+        console.log('fecha item: ', item.fecha)
+        if (item.cabaña === cabana.tipo) {
+          reservas.push(item.fecha);
         }
-        setDisponiblidad(cabana.cantidad - ocupadas)
-      })
-  }, [
-    cabana.server,
-    RangeDates,
-    disponibilidad,
-    cabana.cantidad
-  ]);
+      }
+      console.log('RangeDates: ',RangeDates)
+      console.log('reservas: ',reservas)
+      let ocupadas = 0;
+      for (const element of RangeDates) {
+        const ocurrences = reservas.filter((item) => item === element).length;
+        ocupadas += ocurrences;
+      }
+      setDisponiblidad(cabana.cantidad - ocupadas);
+    });
+  }, [RangeDates, disponibilidad, cabana.cantidad, cabana.tipo]);
 
-  console.log(disponibilidad)
+  console.log("Disponibilidad: ", disponibilidad);
 
   const handleButtonPick = () => {
-    setBookingRooms(NumeroCabanas)
-    setTipoDeCabaña(cabana.tipo)
-    setPrecioCabana((cabana.precio * NumeroCabanas * RangeDates.length).toLocaleString())
-    setCabanaServer(cabana.server)
+    setBookingRooms(NumeroCabanas);
+    setTipoDeCabaña(cabana.tipo);
+    setPrecioCabana(
+      (cabana.precio * NumeroCabanas * RangeDates.length).toLocaleString()
+    );
     navigate("/datos_de_reserva");
   };
   return (
@@ -53,7 +66,13 @@ const PickCabana = ({ cabana }) => {
           })}
         </div>
         <div className="seleccionCabanas">
-          <p className="disponibilidad">{disponibilidad > 0 ? `Cabañas disponibles: ${disponibilidad}` : <p> No hay disponible </p>}</p>
+          <p className="disponibilidad">
+            {disponibilidad !== 0 ? (
+              `Cabañas disponibles: ${disponibilidad}`
+            ) : (
+              <p> No hay disponible </p>
+            )}
+          </p>
           <Button
             className="btnMas"
             variant="outlined"
@@ -69,7 +88,11 @@ const PickCabana = ({ cabana }) => {
           <Button
             className="btnMenos"
             variant="outlined"
-            onClick={ NumeroCabanas < disponibilidad ? () => setNumeroCabanas(NumeroCabanas + 1) : null}
+            onClick={
+              NumeroCabanas < disponibilidad
+                ? () => setNumeroCabanas(NumeroCabanas + 1)
+                : null
+            }
           >
             +
           </Button>
@@ -91,3 +114,19 @@ const PickCabana = ({ cabana }) => {
 };
 
 export default PickCabana;
+
+// const servicioDoc = doc(db, 'Servicios', `${id}`);
+// getDoc(servicioDoc).then((datos)=>{
+//   const doc = datos.data();
+//   setServicio(doc);
+//   console.log(datos)
+// })
+
+//   const serviciosCollection = collection(db, 'Servicios');
+//   getDocs(serviciosCollection).then((datos)=>{
+//     const docs = datos.docs.map((doc)=> ({
+//       id: doc.id,
+//       ...doc.data(),
+//     }));
+//     setServicios(docs);
+//   })

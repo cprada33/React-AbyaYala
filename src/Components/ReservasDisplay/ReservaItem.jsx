@@ -3,14 +3,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import dayjs from "dayjs";
 
 const ReservaItem = ({reserva}) => {
-  const checkin = dayjs(reserva["fecha check in"]).format("DD-MM-YYYY");
-  const checkout = dayjs(reserva["fecha check out"]).format("DD-MM-YYYY");
-
+  const checkin = dayjs(reserva["Check in"]).format("DD-MM-YYYY");
+  const checkout = dayjs(reserva["Check out"]).format("DD-MM-YYYY");
 
   return (
     <>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+        <Card.Img className="ReservaItemImg" variant="top" src={reserva.urlInvoice} />
         <Card.Body>
           <Card.Title>{reserva.idReserva}</Card.Title>
         </Card.Body>

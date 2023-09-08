@@ -14,11 +14,14 @@ const DateContext = ({ children }) => {
   const [PrecioCabana, setPrecioCabana] = useState(null);
   const [CabanaServer, setCabanaServer] = useState(null);
   const [ReservaRealizada, setReservaRealizada] = useState(false);
+  const [Nombre, setNombre] = useState("");
+  let [idReserva, setIdReserva] = useState("");
+
 
   return (
     <>
       <DateBooking.Provider
-        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate, RangeDates, setRangeDates, BookingRooms, setBookingRooms, TipoDeCabaña, setTipoDeCabaña, PrecioCabana, setPrecioCabana, CabanaServer, setCabanaServer, setReservaRealizada, ReservaRealizada }}
+        value={{ CheckInDate, CheckOutDate, setCheckInDate, setCheckOutDate, RangeDates, setRangeDates, BookingRooms, setBookingRooms, TipoDeCabaña, setTipoDeCabaña, PrecioCabana, setPrecioCabana, CabanaServer, setCabanaServer, setReservaRealizada, ReservaRealizada, idReserva, setIdReserva, Nombre, setNombre }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           {children}

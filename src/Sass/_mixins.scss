@@ -115,3 +115,8 @@
     @include semibold;
     font-size: 1.4rem;
 }
+
+@mixin h4-429 {
+    @include semibold;
+    font-size: 1rem;
+}

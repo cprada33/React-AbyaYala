@@ -1,9 +1,11 @@
 import itemData from "../assets/cabanas.json";
+import CarouselBanner from "./CarouselBanner";
 import ImageList from "./ImageList";
 
 const BannerCabanas = () => {
-
-  const cabanasFilter = itemData.filter((itemData) => itemData.tipo === 'Safari')
+  const cabanasFilter = itemData.filter(
+    (itemData) => itemData.tipo === "Safari"
+  );
 
   return (
     <>
@@ -18,6 +20,7 @@ const BannerCabanas = () => {
             <h2>CABAÑAS SAFARIS</h2>
           </div>
           <ImageList fotos={cabanasFilter} />
+          <CarouselBanner fotos={cabanasFilter} />
         </div>
       </section>
       <section>

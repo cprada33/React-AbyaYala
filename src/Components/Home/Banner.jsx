@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { DateBooking } from "../../Context/DateContext";
-import { DatePicker } from "@mui/x-date-pickers";
-import { Button } from "@mui/material";
-import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react';
+import { DateBooking } from '../../Context/DateContext';
+import { DatePicker } from '@mui/x-date-pickers';
+import { Button } from '@mui/material';
+import dayjs from 'dayjs';
+import { useNavigate } from 'react-router-dom';
 
 const Banner = () => {
   const {
@@ -12,9 +12,24 @@ const Banner = () => {
     setCheckOutDate,
     setRangeDates,
     CheckOutDate,
-    setReservaRealizada
+    setReservaRealizada,
   } = useContext(DateBooking);
-  
+
+  // useEffect(() => {
+  //   const infoReserva = {
+  //     Correo: 'cprada33@hotmail.com',
+  //     secret: 'SendThisEmail',
+  //   };
+
+  //   const functions = getFunctions();
+  //   const sendEmail = httpsCallable(functions, 'sendEmail');
+  //   sendEmail({ infoReserva }).then((result) => {
+  //     // Read result of the Cloud Function.
+  //     /** @type {any} */
+  //     console.log('hola', result);
+  //   });
+  // }, []);
+
   const [InputIn, setInputIn] = useState(null);
   const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();
@@ -31,7 +46,7 @@ const Banner = () => {
     }
     setRangeDates(dates);
     setReservaRealizada(false);
-    navigate("/booking");
+    navigate('/booking');
   };
 
   return (
@@ -59,12 +74,9 @@ const Banner = () => {
         </div>
 
         <form
-          className="booking row row-cols-lg-auto g-3 align-items-center"
+          className="booking g-3 align-items-center"
           onSubmit={handleSubmit}
         >
-          <div className="form-group">
-            <div className="form-floating"></div>
-          </div>
           <div className="form-group">
             <div className="form-floating">
               <DatePicker
@@ -77,8 +89,9 @@ const Banner = () => {
                 }}
               />
               <DatePicker
+                className="DatePicker"
                 label="Check out"
-                minDate={CheckInDate.add(1, "day")}
+                minDate={CheckInDate.add(1, 'day')}
                 onChange={(newValue) => {
                   setCheckOutDate(newValue);
                   setInputOut(newValue);

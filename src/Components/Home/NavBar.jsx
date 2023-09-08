@@ -7,13 +7,11 @@ const NavBar = () => {
     <>
       <Navbar collapseOnSelect expand="sm">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand className="logo" href="/">
             <img
               alt="logo"
               src="src/assets/imgs/mainlogo.png"
-              width="300"
-              height="auto"
-              className="d-inline-block align-top logoNav"
+              className="logoNav d-inline-block align-top"
             />{" "}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

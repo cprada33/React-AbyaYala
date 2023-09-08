@@ -3,21 +3,24 @@
         "img": "src/assets/imgs/newcanopy.jpeg",
         "name": "CANOPY",
         "description": "La tirolesa más larga de Colombia.",
-        "precio": "$70.000"
+        "precio": "$70.000",
+        "imgcss": ".img-deporte"
     },
 
     {
         "img": "src/assets/imgs/newrafting.jpeg",
         "name": "RAFTING",
         "description": "Diviertete en el río remando con tus amigos",
-        "precio": "$70.000"
+        "precio": "$70.000",
+        "imgcss": ".img-deporte"
     },
 
     {
         "img": "src/assets/imgs/newrappel.jpeg",
         "name": "TORRENTISMO",
         "description": "Disfruta bajando a lo largo de una",
-        "precio": "$70.000"
+        "precio": "$70.000",
+        "imgcss": ".img-deporte"
     }
 
 ]

@@ -2,6 +2,7 @@
     {
         "img": "src/assets/imgs/bargente.jpeg",
         "section": "div-img-banner-fotos",
+        "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
