@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { DateBooking } from "../../Context/DateContext";
+import { useContext } from 'react';
+import { DateBooking } from '../../Context/DateContext';
 
 const Confirmacion = () => {
-  const { idReserva } =
-    useContext(DateBooking);
+  const { idReserva } = useContext(DateBooking);
 
-    console.log(idReserva);
+  console.log(idReserva);
 
   return (
     <>
@@ -14,6 +13,10 @@ const Confirmacion = () => {
         <h3 className="codigoDeReserva">CÓDIGO DE RESERVA: ABYA{idReserva}</h3>
         <p className="textoConfirmacion">
           ¡A tu correo electronico recibirás toda la información de tu reserva!
+        </p>
+        <p>
+          Revisa la carpeta de SPAM en caso de no encontrar la confirmación en
+          tu bandeja de entrada.
         </p>
         <p className="textoConfirmacion">
           En el siguiente link podrás revisar el menú del restaurante.
