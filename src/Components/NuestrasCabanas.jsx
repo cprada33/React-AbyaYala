@@ -3,7 +3,7 @@ const NuestrasCabanas = () => {
     <>
       <img
         className="img-somos"
-        src="src/assets/imgs/familia.png"
+        src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Ffamilia.png?alt=media&token=13d76330-0bf2-49cd-a948-0ca1327eb02c"
         alt="familia"
       />
       <section className="banner-somos">
@@ -27,7 +27,7 @@ const NuestrasCabanas = () => {
         <div className="img-somos2">
           <img
             className="img-somoss2"
-            src="src/assets/imgs/imagen3.JPG"
+            src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fimagen3.JPG?alt=media&token=a8c75420-2c47-457f-aa33-2bbd808b64a2"
             alt="familia"
           />
         </div>

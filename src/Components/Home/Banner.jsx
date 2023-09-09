@@ -54,7 +54,7 @@ const Banner = () => {
       <section className="grid-banner">
         <img
           className="img-grid-banner"
-          src="src/assets/imgs/bannermujer.png"
+          src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fbannermujer.png?alt=media&token=cfda4ded-25e4-4c97-9065-ca6f497e344c"
           alt="mujerlogo"
         />
         <div className="text-gridbanner-parent main">

@@ -1,6 +1,6 @@
 [
     {
-        "img": "src/assets/imgs/newcanopy.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fnewcanopy.jpeg?alt=media&token=42dccabb-310a-46fb-8099-15c77712c91e",
         "name": "CANOPY",
         "description": "La tirolesa más larga de Colombia.",
         "precio": "$70.000",
@@ -8,7 +8,7 @@
     },
 
     {
-        "img": "src/assets/imgs/newrafting.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fnewrafting.jpeg?alt=media&token=10276284-c1c0-4587-9672-82a67f374fab",
         "name": "RAFTING",
         "description": "Diviertete en el río remando con tus amigos",
         "precio": "$70.000",
@@ -16,7 +16,7 @@
     },
 
     {
-        "img": "src/assets/imgs/newrappel.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fnewrappel.jpeg?alt=media&token=7f17b7d6-0ae1-432b-bc8d-6638c57273bf",
         "name": "TORRENTISMO",
         "description": "Disfruta bajando a lo largo de una",
         "precio": "$70.000",

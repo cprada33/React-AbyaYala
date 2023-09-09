@@ -1,6 +1,6 @@
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const NavBar = () => {
   return (
@@ -10,9 +10,9 @@ const NavBar = () => {
           <Navbar.Brand className="logo" href="/">
             <img
               alt="logo"
-              src="src/assets/imgs/mainlogo.png"
+              src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fmainlogo.png?alt=media&token=cc3fd5fc-a5a3-4ad8-9fee-a51237bce3da"
               className="logoNav d-inline-block align-top"
-            />{" "}
+            />{' '}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

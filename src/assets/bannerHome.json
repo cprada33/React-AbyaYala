@@ -1,49 +1,49 @@
 [
     {
-        "img": "src/assets/imgs/bargente.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fbargente.jpeg?alt=media&token=fac35d40-68db-412e-89c1-276bf6b74da1",
         "section": "div-img-banner-fotos",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/cena.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fcena.jpeg?alt=media&token=e9b032d1-2c33-443e-99e4-fa294c7b124e",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/aerea.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpiscinachica.jpeg?alt=media&token=b5a2fc88-b33a-43ac-b443-e847059edee3",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/genoveva.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fgenoveva.jpeg?alt=media&token=ee0d4e9c-5639-4bdd-8933-78e60c9b8f89",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/panoramica.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Faerea.jpeg?alt=media&token=62d685c4-f880-4d4d-a6d2-f68364aa182c",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/piscinachica.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpanoramica.jpeg?alt=media&token=8c3db632-fb9a-41fe-8c0d-939d820e7417",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/piscinagente.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpiscinagente.jpeg?alt=media&token=4a0a5693-09a4-4144-9387-834cfb2164d1",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"
     },
 
     {
-        "img": "src/assets/imgs/piscinasola.jpeg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpiscinasola.jpeg?alt=media&token=7debd50d-1244-4019-8ea4-ead1ebf9502b",
         "div": "div-img-banner-fotos",
         "imgcss": "img-banner-fotos"}
 ]
