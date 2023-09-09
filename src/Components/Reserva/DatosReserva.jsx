@@ -253,7 +253,7 @@ const DatosReserva = () => {
 
       const invoiceName = invoice.name;
       const storage = getStorage();
-      const archivoRef = ref(storage, invoiceName);
+      const archivoRef = ref(storage, `Comprobantes/${invoiceName}`);
       uploadBytes(archivoRef, invoice)
         .then((snapshot) => {
           console.log('Archivo subido con éxito', snapshot);
