@@ -15,6 +15,7 @@ import { db } from '../../../Firebase/firebase.config';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import dayjs from 'dayjs';
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import Loading from '../Loading';
 
 const DatosReserva = () => {
   const {
@@ -31,6 +32,8 @@ const DatosReserva = () => {
     Nombre,
     setNombre,
   } = useContext(DateBooking);
+
+  const [loading, IsLoading] = useState(false);
 
   console.log('RANGO', RangeDates);
 
@@ -228,6 +231,7 @@ const DatosReserva = () => {
     } else if (ReservaRealizada === true) {
       navigate('/');
     } else {
+      IsLoading(true);
       const lookingId = collection(db, 'reservas');
       getDocs(query(lookingId, orderBy('timestamp', 'desc'), limit(1))).then(
         (datos) => {
@@ -253,7 +257,7 @@ const DatosReserva = () => {
 
       const invoiceName = invoice.name;
       const storage = getStorage();
-      const archivoRef = ref(storage, invoiceName);
+      const archivoRef = ref(storage, `Comprobantes/${invoiceName}`);
       uploadBytes(archivoRef, invoice)
         .then((snapshot) => {
           console.log('Archivo subido con éxito', snapshot);
@@ -277,114 +281,120 @@ const DatosReserva = () => {
 
   return (
     <>
-      <div className="formularioReserva">
-        <h1>DATOS DE RESERVA</h1>
-        <Form
-          action="/files"
-          method="post"
-          encType="multipart/form-data"
-          className="formReserva"
-          onSubmit={handleSubmitDatos}
-        >
-          <Form.Group className="mb-3" controlId="formGridName">
-            <Form.Label>Nombre completo</Form.Label>
-            <Form.Control
-              type="text"
-              onChange={(e) => setNombre(e.target.value)}
-            />
-          </Form.Group>
+      <div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="formularioReserva">
+            <h1>DATOS DE RESERVA</h1>
+            <Form
+              action="/files"
+              method="post"
+              encType="multipart/form-data"
+              className="formReserva"
+              onSubmit={handleSubmitDatos}
+            >
+              <Form.Group className="mb-3" controlId="formGridName">
+                <Form.Label>Nombre completo</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => setNombre(e.target.value)}
+                />
+              </Form.Group>
 
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridCelular">
-              <Form.Label>Número de celular</Form.Label>
-              <Form.Control
-                type="text"
-                minLength={10}
-                onChange={(e) => setCelular(e.target.value)}
-              />
-            </Form.Group>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridCelular">
+                  <Form.Label>Número de celular</Form.Label>
+                  <Form.Control
+                    type="text"
+                    minLength={10}
+                    onChange={(e) => setCelular(e.target.value)}
+                  />
+                </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Correo</Form.Label>
-              <Form.Control
-                type="email"
-                onChange={(e) => setCorreo(e.target.value)}
-              />
-            </Form.Group>
-          </Row>
+                <Form.Group as={Col} controlId="formGridEmail">
+                  <Form.Label>Correo</Form.Label>
+                  <Form.Control
+                    type="email"
+                    onChange={(e) => setCorreo(e.target.value)}
+                  />
+                </Form.Group>
+              </Row>
 
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridID">
-              <Form.Label>Cédula</Form.Label>
-              <Form.Control
-                type="text"
-                onChange={(e) => setCedula(e.target.value)}
-              />
-            </Form.Group>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridID">
+                  <Form.Label>Cédula</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={(e) => setCedula(e.target.value)}
+                  />
+                </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>Número de acompañantes</Form.Label>
-              <Form.Select
-                defaultValue={'Seleccionar'}
-                onChange={(e) => setNumeroAcompanantes(e.target.value)}
-              >
-                <option disabled value="Seleccionar">
-                  Seleccionar
-                </option>
-                {options()}
-              </Form.Select>
-            </Form.Group>
-          </Row>
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label>Número de acompañantes</Form.Label>
+                  <Form.Select
+                    defaultValue={'Seleccionar'}
+                    onChange={(e) => setNumeroAcompanantes(e.target.value)}
+                  >
+                    <option disabled value="Seleccionar">
+                      Seleccionar
+                    </option>
+                    {options()}
+                  </Form.Select>
+                </Form.Group>
+              </Row>
 
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>
-              Nombres y número de cédula de los acompañantes
-            </Form.Label>
-            <Form.Control
-              type="text"
-              onChange={(e) => setInfoAcompanantes(e.target.value)}
-            />
-          </Form.Group>
+              <Form.Group as={Col} controlId="formGridZip">
+                <Form.Label>
+                  Nombres y número de cédula de los acompañantes
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => setInfoAcompanantes(e.target.value)}
+                />
+              </Form.Group>
 
-          <div id="informacionPrevia">
-            <p className="labeldatoInterno">TIPO DE CABAÑA: </p>
-            <p className="datoInterno" id="tipoCabaña">
-              {TipoDeCabaña}
-            </p>
-            <p className="labeldatoInterno">CANTIDAD DE CABAÑAS: </p>
-            <p className="datoInterno" id="cantidadCabanas">
-              {BookingRooms}
-            </p>
-            <p className="labeldatoInterno">FECHA CHECK IN: </p>
-            <p className="datoInterno" id="fechaReservaIn">
-              {CheckInDate.format('DD-MM-YYYY')}
-            </p>
-            <p className="labeldatoInterno">FECHA CHECK OUT: </p>
-            <p className="datoInterno" id="fechaReservaOut">
-              {CheckOutDate.format('DD-MM-YYYY')}
-            </p>
-            <p className="labeldatoInterno">PRECIO TOTAL: </p>
-            <p className="datoInterno" id="precioFinal">
-              ${PrecioCabana}
-            </p>
-            <div className="comprobante">
-              <p className="labeldatoInterno">COMPROBANTE DE PAGO: </p>
-              <input
-                type="file"
-                name="archivo"
-                id="archivo"
-                onChange={(e) => setInvoice(e.target.files[0])}
-              />
-            </div>
+              <div id="informacionPrevia">
+                <p className="labeldatoInterno">TIPO DE CABAÑA: </p>
+                <p className="datoInterno" id="tipoCabaña">
+                  {TipoDeCabaña}
+                </p>
+                <p className="labeldatoInterno">CANTIDAD DE CABAÑAS: </p>
+                <p className="datoInterno" id="cantidadCabanas">
+                  {BookingRooms}
+                </p>
+                <p className="labeldatoInterno">FECHA CHECK IN: </p>
+                <p className="datoInterno" id="fechaReservaIn">
+                  {CheckInDate.format('DD-MM-YYYY')}
+                </p>
+                <p className="labeldatoInterno">FECHA CHECK OUT: </p>
+                <p className="datoInterno" id="fechaReservaOut">
+                  {CheckOutDate.format('DD-MM-YYYY')}
+                </p>
+                <p className="labeldatoInterno">PRECIO TOTAL: </p>
+                <p className="datoInterno" id="precioFinal">
+                  ${PrecioCabana}
+                </p>
+                <div className="comprobante">
+                  <p className="labeldatoInterno">COMPROBANTE DE PAGO: </p>
+                  <input
+                    type="file"
+                    name="archivo"
+                    id="archivo"
+                    onChange={(e) => setInvoice(e.target.files[0])}
+                  />
+                </div>
+              </div>
+
+              <div className="botonFinal">
+                <Button variant="primary" type="submit">
+                  Finalizar reserva
+                </Button>
+                <p id="errorDatos">{FaltanDatos}</p>
+              </div>
+            </Form>
           </div>
-
-          <div className="botonFinal">
-            <Button variant="primary" type="submit">
-              Finalizar reserva
-            </Button>
-            <p id="errorDatos">{FaltanDatos}</p>
-          </div>
-        </Form>
+        )}
       </div>
     </>
   );

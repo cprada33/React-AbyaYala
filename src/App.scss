@@ -2,8 +2,9 @@
  @import '/src/Sass/variables';
 
  body {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
+    min-height: 100vh;
     margin: 0vw;
     font-family: 'Raleway', sans-serif;
     h1 {
@@ -20,6 +21,11 @@
       }
 }
 
+#root {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
 .page {
     width: 100%;
     justify-content: space-evenly;
@@ -31,7 +37,7 @@
 }
 
 .footer {
-  width: 100%;
+    width: 100%;
   text-align: center;
   padding: 0 0 2.5vh 0;
   background-color: $main;
@@ -577,6 +583,46 @@
 }
 
 // DATOS RESERVA
+
+.divloader {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    .textloader {
+        align-items: center;
+        margin: 0;
+        align-self: center;
+    }
+    .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-color: $third #0000;
+        animation: l16 1s infinite linear;
+      }
+      .loader::before,
+      .loader::after {    
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+      }
+      .loader::before {
+        border-color: $main;
+        animation: inherit; 
+        animation-duration: .5s;
+        animation-direction: reverse;
+      }
+      .loader::after {
+        margin: 8px;
+      }
+      @keyframes l16 { 
+        100%{transform: rotate(1turn)}
+      }
+}
 
 .formularioReserva {
     h1 {

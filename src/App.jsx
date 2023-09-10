@@ -15,6 +15,7 @@ import ConfirmacionDeReservaView from './Views/ConfirmacionDeReservaView';
 import ReservasView from './Views/ReservasView';
 import ReservaDetailView from './Views/ReservaDetailView';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Loading from './Components/Loading';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <BrowserRouter>
               <NavBar />
               <Routes>
+                <Route path="/loader" element={<Loading />}></Route>
                 <Route path="/" element={<HomeView />}></Route>
                 <Route
                   path="/actividades"
