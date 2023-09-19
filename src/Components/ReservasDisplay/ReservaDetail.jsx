@@ -1,28 +1,29 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../../Firebase/firebase.config";
-import Table from "react-bootstrap/Table";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../../Firebase/firebase.config';
+import Table from 'react-bootstrap/Table';
 
 const ReservaDetail = () => {
   const { idreserva } = useParams();
-  const [comidaDetail, setComidaDetail] = useState("");
-  const [ReservaData, setReservaData] = useState("");
+  const [comidaDetail, setComidaDetail] = useState('');
+  const [ReservaData, setReservaData] = useState('');
   console.log(ReservaData);
 
   useEffect(() => {
-    getDoc(doc(db, "reservas", `ABYA${idreserva}`)).then((datos) => {
+    getDoc(doc(db, 'reservas', `ABYA${idreserva}`)).then((datos) => {
       const data = datos.data();
       setReservaData(data);
-      setComidaDetail(data["Reserva de comida"]);
+      setComidaDetail(data['Reserva de comida']);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idreserva]);
 
   return (
     <>
       <div className="tableDetail">
         <h1 className="tituloReservas">
-          INFORMACIÓN DE RESERVA:{" "}
+          INFORMACIÓN DE RESERVA:{' '}
           <p className="codeReserva"> ABYA{ReservaData.idReserva}</p>
         </h1>
         <Table striped bordered hover variant="dark">
@@ -68,20 +69,20 @@ const ReservaDetail = () => {
               <td>
                 <input
                   type="text"
-                  defaultValue={ReservaData["Tipo de cabaña"]}
+                  defaultValue={ReservaData['Tipo de cabaña']}
                 />
               </td>
             </tr>
             <tr>
               <td>Check in</td>
               <td>
-                <input type="text" defaultValue={ReservaData["Check in"]} />
+                <input type="text" defaultValue={ReservaData['Check in']} />
               </td>
             </tr>
             <tr>
               <td>Check out</td>
               <td>
-                <input type="text" defaultValue={ReservaData["Check out"]} />
+                <input type="text" defaultValue={ReservaData['Check out']} />
               </td>
             </tr>
             <tr>
@@ -89,7 +90,7 @@ const ReservaDetail = () => {
               <td>
                 <input
                   type="text"
-                  defaultValue={ReservaData["Cantidad de huespedes"]}
+                  defaultValue={ReservaData['Cantidad de huespedes']}
                 />
               </td>
             </tr>
@@ -98,7 +99,7 @@ const ReservaDetail = () => {
               <td>
                 <input
                   type="text"
-                  defaultValue={ReservaData["Información de acompañantes"]}
+                  defaultValue={ReservaData['Información de acompañantes']}
                 />
               </td>
             </tr>

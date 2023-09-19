@@ -193,20 +193,21 @@ const DatosReserva = () => {
       //   }),
       // });
 
-      // let description = `www.abyayalahostel.com/reservas/ABYA${idReserva}`;
-      // const infoEvent = {
-      //   RangeDates,
-      //   BookingRooms,
-      //   Nombre,
-      //   TipoDeCabaña,
-      //   description,
-      // };
-      // const sendCalendar = httpsCallable(functions, 'sendCalendar');
-      // sendCalendar({ infoEvent }).then((result) => {
-      //   // Read result of the Cloud Function.
-      //   /** @type {any} */
-      //   console.log(result.data);
-      // });
+      let description = `www.abyayalahostel.com/reservas/${idReserva}`;
+      const infoEvent = {
+        RangeDates,
+        BookingRooms,
+        Nombre,
+        TipoDeCabaña,
+        description,
+        secret: 'SendThisEvent',
+      };
+      const sendCalendar = httpsCallable(functions, 'sendCalendar');
+      sendCalendar({ infoEvent }).then((result) => {
+        // Read result of the Cloud Function.
+        /** @type {any} */
+        console.log(result.data);
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlInvoice]);

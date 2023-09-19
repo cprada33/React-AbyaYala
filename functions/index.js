@@ -88,7 +88,7 @@ exports.sendEmail = onCall((request) => {
   }
 });
 
-const serviceAccount = require('key.env');
+const serviceAccount = require('./abyayala-6eee9796b053.json');
 
 // Autenticación utilizando la clave de la cuenta de servicio
 const auth = new google.auth.GoogleAuth({
@@ -102,6 +102,9 @@ const calendar = google.calendar({ version: 'v3', auth });
 exports.sendCalendar = onCall((request) => {
   try {
     log('try');
+    if (request.data.infoEvent.secret !== 'SendThisEvent') {
+      return 'Missing secret';
+    }
 
     const RangeDates = request.data.infoEvent.RangeDates;
     for (const date of RangeDates) {

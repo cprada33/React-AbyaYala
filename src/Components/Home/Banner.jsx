@@ -4,6 +4,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { Button } from '@mui/material';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
+// import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const Banner = () => {
   const {
@@ -16,17 +17,20 @@ const Banner = () => {
   } = useContext(DateBooking);
 
   // useEffect(() => {
-  //   const infoReserva = {
-  //     Correo: 'cprada33@hotmail.com',
-  //     secret: 'SendThisEmail',
-  //   };
-
   //   const functions = getFunctions();
-  //   const sendEmail = httpsCallable(functions, 'sendEmail');
-  //   sendEmail({ infoReserva }).then((result) => {
+  //   let description = `www.abyayalahostel.com/reservas/ABYA`;
+  //   const infoEvent = {
+  //     RangeDates: '2023-09-13',
+  //     BookingRooms: '2',
+  //     Nombre: 'Cristian',
+  //     TipoDeCabaña: 'Safari',
+  //     description,
+  //   };
+  //   const sendCalendar = httpsCallable(functions, 'sendCalendar');
+  //   sendCalendar({ infoEvent }).then((result) => {
   //     // Read result of the Cloud Function.
   //     /** @type {any} */
-  //     console.log('hola', result);
+  //     console.log(result.data);
   //   });
   // }, []);
 

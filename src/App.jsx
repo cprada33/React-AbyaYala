@@ -15,7 +15,9 @@ import ConfirmacionDeReservaView from './Views/ConfirmacionDeReservaView';
 import ReservasView from './Views/ReservasView';
 import ReservaDetailView from './Views/ReservaDetailView';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Loading from './Components/Loading';
+import RouteGuard from './Components/ReservasDisplay/RouteGuard';
+import Login from './Components/ReservasDisplay/Login';
+// import MenuView from './Views/MenuView';
 
 function App() {
   return (
@@ -29,12 +31,12 @@ function App() {
             <BrowserRouter>
               <NavBar />
               <Routes>
-                <Route path="/loader" element={<Loading />}></Route>
                 <Route path="/" element={<HomeView />}></Route>
                 <Route
                   path="/actividades"
                   element={<ActividadesView />}
                 ></Route>
+                {/* <Route path="/tester" element={<MenuView />}></Route> */}
                 <Route path="/cabanas" element={<CabanasView />}></Route>
                 <Route path="/nosotros" element={<QuienesSomosView />}></Route>
                 <Route path="/contacto" element={<ContactoView />}></Route>
@@ -47,11 +49,24 @@ function App() {
                   path="/confirmacion_de_reserva"
                   element={<ConfirmacionDeReservaView />}
                 ></Route>
-                <Route path="/reservas" element={<ReservasView />}></Route>
+                <Route
+                  path="/reservas"
+                  element={
+                    <RouteGuard>
+                      {' '}
+                      <ReservasView />{' '}
+                    </RouteGuard>
+                  }
+                ></Route>
                 <Route
                   path="/reservas/:idreserva"
-                  element={<ReservaDetailView />}
+                  element={
+                    <RouteGuard>
+                      <ReservaDetailView />
+                    </RouteGuard>
+                  }
                 ></Route>
+                <Route path="login" element={<Login />}></Route>
               </Routes>
               <Footer />
             </BrowserRouter>

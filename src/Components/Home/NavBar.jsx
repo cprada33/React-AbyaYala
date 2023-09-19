@@ -1,8 +1,25 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { Button } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
 
 const NavBar = () => {
+  const location = useLocation();
+  const renderSignOut = location.pathname.startsWith('/reservas');
+  const navigate = useNavigate();
+
+  const handleSubmitLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <Navbar collapseOnSelect expand="sm">
@@ -23,6 +40,11 @@ const NavBar = () => {
               <Nav.Link href="/nosotros">¿Quienes somos?</Nav.Link>
               <Nav.Link href="/contacto">Contacto</Nav.Link>
             </Nav>
+            {renderSignOut ? (
+              <Button onClick={handleSubmitLogout} variant="primary">
+                Cerrar sesión
+              </Button>
+            ) : null}
           </Navbar.Collapse>
         </Container>
       </Navbar>

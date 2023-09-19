@@ -24,6 +24,7 @@
 #root {
     min-width: 100vw;
     min-height: 100vh;
+    max-height: 100vh;
 }
 
 .page {
@@ -768,6 +769,75 @@
     object-fit: cover;
   }
 
+  // ITEM PRODUCTO
+  
+    .pickProductos {
+        display: flex;
+        justify-content:space-evenly;
+        align-items: baseline;
+      }
+      
+      .titlePlato {
+        text-align: center;
+      }
+      .descripcionPlato {
+        text-align: center;
+        @include mixins.mini-p;
+      }
+      .precioPlato {
+        text-align: center;
+      }
+    
+      .negrilla {
+        @include mixins.bold;
+      }
+      
+      .btn {
+        background-color: $second;
+        border-color: $main;
+        color: white;
+        }
+
+
+  // ITEM LIST
+
+  .productList {
+    padding: 0 80px;
+    .gridProductList {
+        gap: 40px;
+        justify-content: center;
+        padding-top: 30px
+    }
+  }
+
+  // MENU VIEW
+
+  .titleMenu {
+    @include mixins.h1;
+    text-align: center;
+    color: $third;
+  }
+  .refWarn {
+    text-align: center
+  }
+
+  .titleCategoriaPlatos {
+    @include mixins.h2;
+    padding-left: 50px;
+    color: $second;
+  }
+
+  // LOGIN
+
+  .formLoginDiv {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    border: solid 7px $third;
+    border-radius: 5%;
+    padding: 15px;
+    margin: 30px 0;
+  }
   /* MEDIA QUERIES */
 
 /* CELULARES GRANDES */
