@@ -17,7 +17,7 @@ import ReservaDetailView from './Views/ReservaDetailView';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import RouteGuard from './Components/ReservasDisplay/RouteGuard';
 import Login from './Components/ReservasDisplay/Login';
-// import MenuView from './Views/MenuView';
+import MenuView from './Views/MenuView';
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
                   path="/actividades"
                   element={<ActividadesView />}
                 ></Route>
-                {/* <Route path="/tester" element={<MenuView />}></Route> */}
+                <Route path="/tester" element={<MenuView />}></Route>
                 <Route path="/cabanas" element={<CabanasView />}></Route>
                 <Route path="/nosotros" element={<QuienesSomosView />}></Route>
                 <Route path="/contacto" element={<ContactoView />}></Route>

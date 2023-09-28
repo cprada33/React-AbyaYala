@@ -64,6 +64,7 @@ exports.sendEmail = onCall((request) => {
       .replace(/\${bookingRooms}/g, request.data.infoEmail.BookingRooms)
       .replace(/\${checkIn}/g, request.data.infoEmail.CheckInDate)
       .replace(/\${checkOut}/g, request.data.infoEmail.CheckOutDate)
+      .replace(/\${idReserva}/g, request.data.infoEmail.idReserva)
       .replace(
         /\${tipoDeCabana}/g,
         request.data.infoEmail.TipoDeCabaña.toString().toUpperCase(),
@@ -73,7 +74,7 @@ exports.sendEmail = onCall((request) => {
     const mailOptions = {
       bcc: request.data.infoEmail.Correo,
       subject: request.data.infoEmail.subject,
-      text: correoHtml,
+      html: correoHtml,
       headers: {
         'Content-Type': 'text/html',
       },

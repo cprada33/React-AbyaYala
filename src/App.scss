@@ -1241,6 +1241,9 @@
         // RESERVA DETAIL
         .tableDetail {
             padding: 10px;
+            .table-dark {
+                --bs-table-bg: blue;
+            }
             .tituloReservas {
                 @include mixins.h1-576;
                 .codeReserva {

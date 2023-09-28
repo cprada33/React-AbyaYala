@@ -9,14 +9,13 @@
     <meta name="x-apple-disable-message-reformatting" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="telephone=no" name="format-detection" />
-    <title>New message 4</title>
-    <!--[if (mso 16)
-      ]><style type="text/css">
+    <!--[if (mso 16)]>
+      <style type="text/css">
         a {
           text-decoration: none;
         }
-      </style><!
-    [endif]-->
+      </style>
+    <![endif]-->
     <!--[if gte mso 9
       ]><style>
         sup {
@@ -24,13 +23,14 @@
         }
       </style><!
     [endif]-->
-    <!--[if gte mso 9
-      ]><xml>
+    <!--[if gte mso 9]>
+      <xml>
         <o:OfficeDocumentSettings>
-          <o:AllowPNG></o:AllowPNG> <o:PixelsPerInch>96</o:PixelsPerInch>
+          <o:AllowPNG></o:AllowPNG>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
         </o:OfficeDocumentSettings>
-      </xml><!
-    [endif]-->
+      </xml>
+    <![endif]-->
     <!--[if !mso]><!-- -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i"
@@ -134,7 +134,7 @@
         .es-infoblock a {
           font-size: 12px !important;
         }
-        *[class="gmail-fix"] {
+        *[class='gmail-fix'] {
           display: none !important;
         }
         .es-m-txt-c,
@@ -263,10 +263,11 @@
     "
   >
     <div class="es-wrapper-color" style="background-color: #f6f6f6">
-      <!--[if gte mso 9
-        ]><v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-          <v:fill type="tile" color="#f6f6f6"></v:fill> </v:background
-      ><![endif]-->
+      <!--[if gte mso 9]>
+        <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+          <v:fill type="tile" color="#f6f6f6"></v:fill>
+        </v:background>
+      <![endif]-->
       <table
         class="es-wrapper"
         width="100%"
@@ -388,7 +389,7 @@
                                     >
                                       <em
                                         ><strong
-                                          >HOLA, ${Nombre} &nbsp;</strong
+                                          >HOLA, ${Nombre}&nbsp;</strong
                                         ></em
                                       >
                                     </p>
@@ -522,7 +523,7 @@
                                         font-size: 23px;
                                       "
                                     >
-                                      <strong>CABAÑA ${tipoDeCabana}</strong>
+                                      <strong>CABAÑA: ${tipoDeCabana}</strong>
                                     </p>
                                   </td>
                                 </tr>
@@ -564,11 +565,62 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      <br /><strong
-                                        >Fecha: ${checkIn} / ${checkOut}
-                                        &nbsp;</strong
-                                      ><br /><strong>Capacidad:</strong> 2
-                                      personas / cabaña
+                                      <br />
+                                    </p>
+                                    <p
+                                      style="
+                                        margin: 0;
+                                        -webkit-text-size-adjust: none;
+                                        -ms-text-size-adjust: none;
+                                        mso-line-height-rule: exactly;
+                                        font-family: arial, 'helvetica neue',
+                                          helvetica, sans-serif;
+                                        line-height: 21px;
+                                        color: #333333;
+                                        font-size: 14px;
+                                      "
+                                    >
+                                      <strong>Reserva: </strong
+                                      >${idReserva}<br />
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td
+                                    align="left"
+                                    style="padding: 0; margin: 0"
+                                  >
+                                    <p
+                                      style="
+                                        margin: 0;
+                                        -webkit-text-size-adjust: none;
+                                        -ms-text-size-adjust: none;
+                                        mso-line-height-rule: exactly;
+                                        font-family: roboto, 'helvetica neue',
+                                          helvetica, arial, sans-serif;
+                                        line-height: 21px;
+                                        color: #333333;
+                                        font-size: 14px;
+                                      "
+                                    >
+                                      <b style="text-align: center">Fecha: </b
+                                      >${checkIn} / ${checkOut}
+                                    </p>
+                                    <p
+                                      style="
+                                        margin: 0;
+                                        -webkit-text-size-adjust: none;
+                                        -ms-text-size-adjust: none;
+                                        mso-line-height-rule: exactly;
+                                        font-family: roboto, 'helvetica neue',
+                                          helvetica, arial, sans-serif;
+                                        line-height: 21px;
+                                        color: #333333;
+                                        font-size: 14px;
+                                      "
+                                    >
+                                      <strong>Capacidad:</strong> 2 personas /
+                                      cabaña
                                     </p>
                                   </td>
                                 </tr>
@@ -610,13 +662,11 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      <strong></strong
-                                      ><strong
-                                        >Cantidad de cabañas:
-                                        ${bookingRooms}</strong
-                                      ><br /><strong>Check in: </strong>2:00
-                                      pm<br /><strong>Check out: </strong>12:00
-                                      pm
+                                      <strong>Cantidad de cabañas: </strong
+                                      >${bookingRooms}<br /><strong
+                                        >Check in: </strong
+                                      >2:00 pm<br /><strong>Check out: </strong
+                                      >12:00 pm
                                     </p>
                                   </td>
                                 </tr>
@@ -812,7 +862,7 @@
                                         mso-line-height-rule: exactly;
                                         font-family: roboto, 'helvetica neue',
                                           helvetica, arial, sans-serif;
-                                        line-height: 28px;
+                                        line-height: 40px;
                                         color: #006400;
                                         font-size: 14px;
                                       "
@@ -1923,26 +1973,5 @@
         </tr>
       </table>
     </div>
-    <script type="text/javascript" src="server.js"></script>
-    <script type="text/javascript">
-      function f() {
-        let name = Student.name;
-        let age = Student.age;
-        let dept = Student.dept;
-        let score = Student.score;
-
-        let str =
-          "Name:" +
-          name +
-          "\nAge: " +
-          age +
-          "\nDepartment:" +
-          dept +
-          "\nScore: " +
-          score;
-
-        document.getElementById("text").innerHTML = str;
-      }
-    </script>
   </body>
 </html>

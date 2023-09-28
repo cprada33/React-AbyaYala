@@ -109,6 +109,7 @@ const DatosReserva = () => {
         PrecioCabana,
         TipoDeCabaña,
         subject: 'Confirmación de reserva',
+        idReserva: `ABYA${idReserva}`,
       };
 
       const functions = getFunctions();
