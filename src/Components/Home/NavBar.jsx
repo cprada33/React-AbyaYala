@@ -4,11 +4,16 @@ import Nav from 'react-bootstrap/Nav';
 import { Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useContext } from 'react';
+import { DateBooking } from '../../Context/DateContext';
 
 const NavBar = () => {
   const location = useLocation();
   const renderSignOut = location.pathname.startsWith('/reservas');
+  const renderCart = location.pathname.includes('/menu');
   const navigate = useNavigate();
+  const { setActive, comida } = useContext(DateBooking);
 
   const handleSubmitLogout = () => {
     const auth = getAuth();
@@ -20,10 +25,15 @@ const NavBar = () => {
         console.log(error);
       });
   };
+
+  const handleClick = () => {
+    setActive(true);
+  };
+
   return (
     <>
       <Navbar collapseOnSelect expand="sm">
-        <Container>
+        <Container className="ContNavbar">
           <Navbar.Brand className="logo" href="/">
             <img
               alt="logo"
@@ -39,13 +49,29 @@ const NavBar = () => {
               <Nav.Link href="/cabanas">Cabañas</Nav.Link>
               <Nav.Link href="/nosotros">¿Quienes somos?</Nav.Link>
               <Nav.Link href="/contacto">Contacto</Nav.Link>
+              <Nav.Link href="/mireserva">Mi reserva</Nav.Link>
             </Nav>
             {renderSignOut ? (
-              <Button onClick={handleSubmitLogout} variant="primary">
+              <Button
+                className="btnLogOut"
+                onClick={handleSubmitLogout}
+                variant="primary"
+              >
                 Cerrar sesión
               </Button>
             ) : null}
           </Navbar.Collapse>
+          {renderCart ? (
+            <div
+              className="navBarCarrito"
+              onClick={() => {
+                handleClick();
+              }}
+            >
+              <Nav.Link>{`(${comida.length})`}</Nav.Link>
+              <ShoppingCartIcon fontSize="large" sx={{ color: '#f1bb1b' }} />
+            </div>
+          ) : null}
         </Container>
       </Navbar>
     </>

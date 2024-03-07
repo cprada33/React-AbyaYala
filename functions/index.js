@@ -55,20 +55,44 @@ exports.sendEmail = onCall((request) => {
   try {
     log(request.data);
     if (request.data.secret !== 'SendThisEmail') return 'Missing secret';
-
-    const correoHtml = htmlTemplate
-      .replace(
-        /\${Nombre}/g,
-        request.data.infoEmail.Nombre.toString().toUpperCase(),
-      )
-      .replace(/\${bookingRooms}/g, request.data.infoEmail.BookingRooms)
-      .replace(/\${checkIn}/g, request.data.infoEmail.CheckInDate)
-      .replace(/\${checkOut}/g, request.data.infoEmail.CheckOutDate)
-      .replace(/\${idReserva}/g, request.data.infoEmail.idReserva)
-      .replace(
-        /\${tipoDeCabana}/g,
-        request.data.infoEmail.TipoDeCabaña.toString().toUpperCase(),
-      );
+    const imagenes = [
+      'https://kjfeny.stripocdn.email/content/guids/CABINET_d8387da5a856be5da09e046da1f92c84c2b2fe67127e6332fab09f9e87b13716/images/ancestral.jpeg',
+      'https://kjfeny.stripocdn.email/content/guids/CABINET_48664cbdf35949eaa07b5dcfa669d694/images/unnamed_1.jpg',
+    ];
+    let correoHtml = htmlTemplate;
+    if (request.data.infoEmail.TipoDeCabaña.toString() == 'Ancestral') {
+      correoHtml = htmlTemplate
+        .replace(
+          /\${Nombre}/g,
+          request.data.infoEmail.Nombre.toString().toUpperCase(),
+        )
+        .replace(/\${bookingRooms}/g, request.data.infoEmail.BookingRooms)
+        .replace(/\${checkIn}/g, request.data.infoEmail.CheckInDate)
+        .replace(/\${checkOut}/g, request.data.infoEmail.CheckOutDate)
+        .replace(/\${idReserva}/g, request.data.infoEmail.idReserva)
+        .replace(
+          /\${tipoDeCabana}/g,
+          request.data.infoEmail.TipoDeCabaña.toString()
+            .toUpperCase()
+            .replace(/\${imagen}/g, imagenes[1]),
+        );
+    } else if (request.data.infoEmail.TipoDeCabaña.toString() == 'Safari') {
+      correoHtml = htmlTemplate
+        .replace(
+          /\${Nombre}/g,
+          request.data.infoEmail.Nombre.toString().toUpperCase(),
+        )
+        .replace(/\${bookingRooms}/g, request.data.infoEmail.BookingRooms)
+        .replace(/\${checkIn}/g, request.data.infoEmail.CheckInDate)
+        .replace(/\${checkOut}/g, request.data.infoEmail.CheckOutDate)
+        .replace(/\${idReserva}/g, request.data.infoEmail.idReserva)
+        .replace(
+          /\${tipoDeCabana}/g,
+          request.data.infoEmail.TipoDeCabaña.toString()
+            .toUpperCase()
+            .replace(/\${imagen}/g, imagenes[2]),
+        );
+    }
 
     // Datos del corre
     const mailOptions = {

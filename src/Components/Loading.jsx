@@ -5,7 +5,6 @@ const Loading = () => {
   const renderDatosDeReserva = location.pathname === '/datos_de_reserva';
   const renderMenu = location.pathname === '/menu';
   const newScreenHeight = window.innerHeight;
-  console.log(newScreenHeight);
   const padding = (newScreenHeight - 170 - 150) / 2;
   const divStyle = {
     padding: padding,

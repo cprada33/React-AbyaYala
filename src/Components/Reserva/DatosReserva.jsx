@@ -31,21 +31,25 @@ const DatosReserva = () => {
     idReserva,
     Nombre,
     setNombre,
+    Celular,
+    setCelular,
+    Correo,
+    setCorreo,
+    Cedula,
+    setCedula,
+    NumeroAcompanantes,
+    setNumeroAcompanantes,
+    InfoAcompanantes,
+    setInfoAcompanantes,
+    invoice,
+    setInvoice,
+    urlInvoice,
+    setUrlInvoice,
   } = useContext(DateBooking);
 
   const [loading, IsLoading] = useState(false);
 
-  console.log('RANGO', RangeDates);
-
-  const [Celular, setCelular] = useState('');
-  const [Correo, setCorreo] = useState('');
-  const [Cedula, setCedula] = useState('');
-  const [NumeroAcompanantes, setNumeroAcompanantes] = useState('');
-  const [InfoAcompanantes, setInfoAcompanantes] = useState('');
   const [FaltanDatos, setFaltanDatos] = useState(null);
-  const [invoice, setInvoice] = useState(null);
-  const [urlInvoice, setUrlInvoice] = useState(null);
-
   const navigate = useNavigate();
 
   const options = () => {
@@ -67,28 +71,6 @@ const DatosReserva = () => {
       return;
     } else {
       for (let i = 0; i < BookingRooms; i++) {
-        // const requestOptions = {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({ RangeDates }),
-        // };
-        // fetch(CabanaServer, requestOptions)
-        //   .then((response) => {
-        //     console.log("Respuesta del servidor:", response);
-
-        //     if (!response.ok) {
-        //       throw new Error("Error en la solicitud POST");
-        //     }
-        //     return response.json();
-        //   })
-        //   .then((data) => {
-        //     console.log("Datos insertados correctamente:", data);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error en la solicitud POST:", error);
-        //   });
         let n = 0;
         for (const element of RangeDates) {
           setDoc(doc(db, 'reservadas', `${idReserva + n.toString() + i}`), {
@@ -120,19 +102,11 @@ const DatosReserva = () => {
         console.log(result.data);
       });
 
-      // const sendEmail = fetch("/SendEmail", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ infoReserva, secret: "SendThisEmail" }),
-      // });
-
       setDoc(doc(db, 'reservas', `${'ABYA' + idReserva}`), {
         idReserva: idReserva,
-        Nombre: Nombre,
-        Celular: Celular,
-        Correo: Correo,
+        Nombre,
+        Celular,
+        Correo,
         Cédula: Cedula,
         'Cantidad de cabañas': BookingRooms,
         'Cantidad de huespedes': NumeroAcompanantes,
@@ -147,52 +121,6 @@ const DatosReserva = () => {
         setReservaRealizada(true);
         navigate('/confirmacion_de_reserva');
       });
-
-      // fetch("http://localhost:3000/datos4", requestOptions)
-      //   .then((response) => {
-      //     if (!response.ok) {
-      //       throw new Error("Error en la solicitud POST");
-      //     }
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     setIdReserva(data);
-      //     let description = `www.abyayalahostel.com/reservas/${data.slice(4)}`;
-      //     const event = {
-      //       RangeDates,
-      //       description,
-      //       BookingRooms,
-      //       Nombre,
-      //       TipoDeCabaña,
-      //     };
-
-      //     fetch("http://localhost:3000/crear-evento", {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify(event),
-      //     }).then(function (response) {
-      //       if (response.ok) {
-      //         console.log("Evento creado");
-      //       }
-      //     });
-
-      // fetch("http://localhost:3000/send-email", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     Correo,
-      //     subject,
-      //     Nombre,
-      //     BookingRooms,
-      //     CheckInDate,
-      //     CheckOutDate,
-      //     TipoDeCabaña,
-      //   }),
-      // });
 
       let description = `www.abyayalahostel.com/reservas/${idReserva}`;
       const infoEvent = {
@@ -243,20 +171,6 @@ const DatosReserva = () => {
         },
       );
 
-      //     const formData = new FormData();
-      //     formData.append("archivo", invoice);
-      //     formData.append("idReserva", data);
-
-      //     fetch("http://localhost:3000/files", {
-      //       method: "POST",
-      //       body: formData,
-      //     }).then(function (response) {
-      //       if (response.ok) {
-      //         console.log("Archivo subido");
-      //       }
-      //     });
-      //   });
-
       const invoiceName = invoice.name;
       const storage = getStorage();
       const archivoRef = ref(storage, `Comprobantes/${invoiceName}`);
@@ -265,7 +179,6 @@ const DatosReserva = () => {
           console.log('Archivo subido con éxito', snapshot);
           getDownloadURL(archivoRef)
             .then((url) => {
-              console.log(url);
               setUrlInvoice(url);
             })
             .catch((error) => {

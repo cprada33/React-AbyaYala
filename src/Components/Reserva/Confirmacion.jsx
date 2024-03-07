@@ -4,8 +4,6 @@ import { DateBooking } from '../../Context/DateContext';
 const Confirmacion = () => {
   const { idReserva } = useContext(DateBooking);
 
-  console.log(idReserva);
-
   return (
     <>
       <div className="confirmacion">

@@ -27,6 +27,14 @@
     max-height: 100vh;
 }
 
+.Bienvenida_Div {
+    margin: 0 100px 400px 100px;
+    .Bienvenida_titulo {
+        text-align: center;
+    }
+}
+
+
 .page {
     width: 100%;
     justify-content: space-evenly;
@@ -35,6 +43,25 @@
 
 .logoNav {
     width: 300px;
+}
+
+.btnLogOut{
+    background-color: $main;
+    border-color: $main;
+    font-size: 1rem;
+    width: 170px;
+    margin-right: 20px;
+}
+
+.ContNavbar{
+    .navbar-toggler{
+        margin-left: 80px;
+    }
+}
+
+.navBarCarrito{
+    display: flex;
+    align-items: center;
 }
 
 .footer {
@@ -700,7 +727,124 @@
     }
 }
 
-// RESERVAS SECTION
+// // // RESERVAS SECTION
+
+// // RESERVA DETAIL
+
+.codeReserva {
+    text-align: center;
+    color: $second;
+    font-size: 3rem;
+    @include mixins.black;
+}
+.tituloReservas {
+    padding-top: 40px;
+    text-align: center;
+    color: $main;
+    font-size: 4rem;
+}
+.tableReserva {
+    padding: 0px 30px;
+}
+
+.imgOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .imgContainer {
+        position: relative;
+        max-width: 80%;
+        height: 80%;
+        .imgDetail {
+            height: 100%;
+        }
+    }
+    .closerOverlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        width: 20px;
+        height: 25px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        font-size: 17px;
+        cursor: pointer;
+    }
+}
+    // NUEVA RESERVA DETALLADA
+
+.tableDetail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 45px 70px;
+    .imgReservaDetalladaDiv {
+        justify-self: center;
+        padding-right: 30px;
+        .imgReservaDetallada {
+            max-width: 100%;
+            min-width: 500px;
+        }
+    }
+    .formReservaDetail {
+        max-width: 100vw;
+        .subReservaDetallada {
+            color: $third;
+            font-size: 2rem;
+        }
+        .botonFinal {
+            text-align: center;
+            padding-top: 30px;
+            .btn {
+                background-color: $third;
+                border-color: $third;
+            }
+        }
+    }
+}
+
+.comidaDetail{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imgComprobante {
+    margin-left: 70px;
+}
+.DatePickerLabel {
+    margin-right: 100px;
+}
+
+.buttonComida {
+    margin-top: 20px;
+    background-color: $third;
+    border-color: $third;
+}
+// // Mi reserva
+
+.tituloMiReserva {
+    color: $third;
+    margin: 30px 0 50px 200px;
+}
+.formMireserva {
+    padding: 0 200px;
+    min-height: 58vh;
+    .btn {
+        margin-top: 30px;
+        background-color: $third;
+        border-color: $third;
+    }
+}
+
+
+// // RESERVAS
 
 .reservasSection {
     gap: 40px 40px;
@@ -711,65 +855,12 @@
     padding-bottom: 40px;
 }
 
-// RESERVA DETAIL
+// ITEM PRODUCTO
 
-.codeReserva {
-    text-align: center;
-    color: $second;
-    font-size: 4rem;
-    @include mixins.black;
-}
-.tituloReservas {
-    padding-top: 40px;
-    text-align: center;
-    color: $main;
-    font-size: 4rem;
-}
-.reservaContainer {
-    display: grid;
-    grid-template-columns: 20% 20% 60%;
-    padding: 40px;
-    .labelColumn {
-        display: flex;
-        flex-direction: column;
-        background-color: $third;
-        border: solid 4px $third;
-    }
-    .inputColumn {
-        display: flex;
-        flex-direction: column;
-        border-bottom: solid 8px $third;
-        border-top: solid 8px $third;
-    }
-    .imgColumn {
-        border-bottom: solid 8px $third;
-        border-top: solid 8px $third;
-        border-right: solid 8px $third;
-        text-align-last: center;
-        .imgComprobante {
-            width: 600px;
-        }
-    }
-    .label {
-        text-align: end;
-        padding: 20px 10px 20px 0;
-        @include mixins.semibold;
-    }
-    .input {
-        border: none;
-        margin: 20px 0 20px 40px;
-        padding: 0 0;
-
-    }
-  }
-
-  // RESERVA ITEM
   .ReservaItemImg {
     height: 200px;
     object-fit: cover;
   }
-
-  // ITEM PRODUCTO
   
     .pickProductos {
         display: flex;
@@ -779,38 +870,70 @@
       
       .titlePlato {
         text-align: center;
+        font-size: 1.2rem;
       }
       .descripcionPlato {
         text-align: center;
         @include mixins.mini-p;
+        font-size: 1rem;
       }
       .precioPlato {
         text-align: center;
+        font-size: 1.2rem;
       }
     
       .negrilla {
         @include mixins.bold;
       }
       
-      .btn {
+      .btn.menu {
         background-color: $second;
         border-color: $main;
         color: white;
+        font-size: 0.8rem;
         }
 
 
   // ITEM LIST
 
   .productList {
-    padding: 0 80px;
+    padding: 20px 80px;
     .gridProductList {
         gap: 40px;
         justify-content: center;
         padding-top: 30px
     }
+    .subcategoriaTitle{
+        font-size: 1.5rem;
+        margin-left: 70px;
+        color: $third;
+    }
   }
 
   // MENU VIEW
+
+  // // BARRA SELECTORA
+  .containerBarra {
+    margin: 0 100px;
+    max-width: 85%;
+    .row {
+        .col-md-3 {
+            padding: 20px 0;
+            text-align: center;
+            .imgCatMenu {
+                width: 90px;
+              }
+              .titleCatMenu {
+                font-size: 1.2rem;
+                color: $main;
+                margin: 10px 0;
+              }
+          }
+    }
+  }
+
+
+
 
   .titleMenu {
     @include mixins.h1;
@@ -823,8 +946,9 @@
 
   .titleCategoriaPlatos {
     @include mixins.h2;
-    padding-left: 50px;
+    padding-left: 150px;
     color: $second;
+    font-size: 2rem;
   }
 
   // LOGIN
@@ -838,6 +962,111 @@
     padding: 15px;
     margin: 30px 0;
   }
+
+  // CARRITO 
+    .carrito{
+        display: flex;
+        position: fixed;
+        top: 0;
+        .opacity{
+            background-color: black;
+            width: 70vw;
+            opacity: 50%;
+        }
+        .CarritoGrid{
+            background-color: white;
+            width: 30vw;
+            min-height: 100vh;
+            max-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 0.1fr 1fr 0.5fr;
+            .topCarrito{
+                display: flex;
+                grid-row: 1/2;
+                grid-column: 1/3;
+                border-bottom: solid 1.3px $second;
+                    .flechaCarrito{
+                        align-self: center;
+                        margin: 0 5px;
+                        color: $third;
+                    }
+                    .titleCarrito{
+                        font-size: 1.3rem;
+                        align-self: center;
+                        margin: 0;
+                        color: $main;
+                    }
+            }
+            .productosCarrito{
+                grid-row: 2/3;
+                grid-column: 1/3;
+                overflow-y: scroll;
+                .productoCarrito{
+                    padding: 10px 20px;
+                    display: flex;
+                    .removeComida{
+                        margin: 0;
+                        align-self: center;
+                        padding: 0 15px 0 0;
+                        color: $third;
+                        font-weight: 700;
+                        font-size: 1.3rem;
+                        border: none;
+                        background-color: transparent;
+                        
+                    }
+                }
+            }
+            .detallesCarrito{
+                grid-row: 3/4;
+                grid-column: 1/3;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(5,auto);
+                margin: 25px 25px;
+                p{
+                    font-size: 1rem;
+                    justify-self: end;
+                    color: $main;
+                    margin: 0;
+                }
+                .subtitleCarrito{
+                    font-size: 1rem;
+                    font-weight: 600;
+                    justify-self: normal;
+                    margin: 0;
+                }
+                .btnCarrito{
+                    justify-self: center;
+                    grid-column: 1/3;
+                    background-color: $third;
+                    border-color: $third;
+                }
+                .separador{
+                    grid-column: 1/3;
+                    border-top: 1px solid $second;
+                    width: 100%;
+                    margin: 10px 0;
+                }
+            }
+        }
+}
+
+
+.MuiBox-root {
+    width: 100%;
+    background-color: $main;
+    color: white;
+}
+.pProductoCarrito{
+    font-size: 0.9rem;
+    margin: 0;
+}
+.pProductoCarrito.tit{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
   /* MEDIA QUERIES */
 
 /* CELULARES GRANDES */
@@ -1182,8 +1411,66 @@
                 }
             }
         }
+
+        // RESERVAS VIEW
+        
+        .titulo.ReservasView{
+            font-size: 4rem;
+        }
     
         // MENU
+
+        .containerBarra{
+            margin: 0;
+            padding: 0 30px;
+            width: 100%;
+            max-width: 100%;
+        }
+        .colBarra{
+            width: 25%;
+        }
+        .titleMenu{
+            font-size: 4rem;
+        }
+        .imgCatMenu{
+            width: 60px;
+        }
+
+        .productList{
+            padding: 0;
+            .subcategoriaTitle{
+                margin-left: 20px;
+            }
+            .gridProductList{
+                display: grid;
+                grid-template-columns: repeat(2,50vw);
+                gap: 0;
+                .colProductList {
+                    width: 100%;
+                    margin: 0;
+                    .card{
+                        margin: 0 0 15px 0;
+                    }
+                }
+            }
+            .gridProductList.row{
+                margin: 0;
+            }
+        }
+
+        .titlePlato{
+            font-size: 1rem;
+        }
+        .descripcionPlato{
+            font-size: 0.9rem;
+        }
+        .precioPlato{
+            font-size: 1.2rem;
+        }
+
+        .titleCategoriaPlatos{
+            padding-left: 20px;
+        }
     
         section {
             .titulo-menu {
@@ -1217,6 +1504,18 @@
                 @include mixins.h2-576;
             }
         }
+                
+        // CARRITO
+
+        .carrito{
+            .opacity{
+                display: none;
+            }
+            .CarritoGrid{
+                grid-template-columns: 1fr;
+                width: 100vw;
+            }
+        }
 
 
         // CONFIRMACION 
@@ -1238,17 +1537,33 @@
             }
         } 
 
-        // RESERVA DETAIL
+        // NUEVA RESERVA DETALLADA
         .tableDetail {
-            padding: 10px;
-            .table-dark {
-                --bs-table-bg: blue;
-            }
-            .tituloReservas {
-                @include mixins.h1-576;
-                .codeReserva {
-                    @include mixins.h2-576;
+            padding: 20px 20px;
+            grid-template-columns: 1fr;
+            .imgReservaDetalladaDiv {
+                padding-right: 0;
+                .imgReservaDetallada {
+                    max-width: 100%;
+                    min-width: 300px;
                 }
+            }
+            .formReservaDetail{
+                .row{
+                    margin: 0;
+                }
+                .subReservaDetallada{
+                    padding-top: 15px;
+                }
+            }
+            .table-dark {
+                --bs-table-bg: #228fa2;
+            }
+        }
+        .tituloReservas {
+            @include mixins.h1-576;
+            .codeReserva {
+                @include mixins.h2-576;
             }
         }
     }

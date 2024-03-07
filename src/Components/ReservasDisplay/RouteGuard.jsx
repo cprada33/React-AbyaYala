@@ -9,7 +9,7 @@ const RouteGuard = ({ children }) => {
   if (!auth._isInitialized) {
     onAuthStateChanged(auth, (oasUser) => {
       if (oasUser) {
-        navigate('/reservas');
+        navigate(window.location);
       } else {
         navigate('/login');
       }
