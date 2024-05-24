@@ -43,7 +43,7 @@ const Banner = () => {
           alt="mujerlogo"
         />
         <div className="text-gridbanner-parent main">
-          <h1 className="text-gridbanner">BIENVENIDO</h1>
+          <h1 className="text-gridbanner">BIENVENIDOS</h1>
         </div>
         <div className="text-gridbanner-parent blue">
           <h1 className="text-gridbanner blue primero">A</h1>

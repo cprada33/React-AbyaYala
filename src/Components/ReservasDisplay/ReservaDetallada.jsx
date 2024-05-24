@@ -112,40 +112,61 @@ const ReservaDetallada = ({ origen }) => {
 
   const handleSubmitDatos = (event) => {
     event.preventDefault();
-    const invoiceName = invoice.name;
-    const storage = getStorage();
-    const archivoRef = ref(storage, `Comprobantes/${invoiceName}`);
-    uploadBytes(archivoRef, invoice)
-      .then((snapshot) => {
-        console.log('Archivo subido con éxito', snapshot);
-        getDownloadURL(archivoRef)
-          .then((url) => {
-            const thisReserva = doc(db, 'reservas', `ABYA${idreserva}`);
-            updateDoc(thisReserva, {
-              Nombre,
-              Correo,
-              Celular,
-              Cédula: Cedula,
-              'Tipo de cabaña': TipoDeCabaña,
-              'Cantidad de cabañas': BookingRooms,
-              'Información de acompañantes': InfoAcompanantes,
-              'Cantidad de huespedes': NumeroAcompanantes,
-              'Check in': CheckInDate.toISOString().slice(0, 10),
-              'Check out': CheckOutDate.toISOString().slice(0, 10),
-              urlInvoice: url,
+    if (invoice != undefined) {
+      const invoiceName = invoice.name;
+      const storage = getStorage();
+      const archivoRef = ref(storage, `Comprobantes/${invoiceName}`);
+      uploadBytes(archivoRef, invoice)
+        .then((snapshot) => {
+          console.log('Archivo subido con éxito', snapshot);
+          getDownloadURL(archivoRef)
+            .then((url) => {
+              const thisReserva = doc(db, 'reservas', `ABYA${idreserva}`);
+              updateDoc(thisReserva, {
+                Nombre,
+                Correo,
+                Celular,
+                Cédula: Cedula,
+                'Tipo de cabaña': TipoDeCabaña,
+                'Cantidad de cabañas': BookingRooms,
+                'Información de acompañantes': InfoAcompanantes,
+                'Cantidad de huespedes': NumeroAcompanantes,
+                'Check in': CheckInDate.toISOString().slice(0, 10),
+                'Check out': CheckOutDate.toISOString().slice(0, 10),
+                urlInvoice: url,
+              });
+            })
+            .catch((error) => {
+              console.error(
+                'Error al obtener el enlace de acceso al archivo:',
+                error,
+              );
             });
-          })
-          .catch((error) => {
-            console.error(
-              'Error al obtener el enlace de acceso al archivo:',
-              error,
-            );
-          });
-      })
-      .catch((error) => {
-        console.error('Error al subir el archivo', error);
+        })
+        .catch((error) => {
+          console.error('Error al subir el archivo', error);
+        });
+    } else {
+      const thisReserva = doc(db, 'reservas', `ABYA${idreserva}`);
+      updateDoc(thisReserva, {
+        Nombre,
+        Correo,
+        Celular,
+        Cédula: Cedula,
+        'Tipo de cabaña': TipoDeCabaña,
+        'Cantidad de cabañas': BookingRooms,
+        'Información de acompañantes': InfoAcompanantes,
+        'Cantidad de huespedes': NumeroAcompanantes,
+        'Check in': CheckInDate.toISOString().slice(0, 10),
+        'Check out': CheckOutDate.toISOString().slice(0, 10),
       });
-    navigate('/mireserva');
+      console.log('envio sin img');
+    }
+    if (location.pathname.includes('/mireserva')) {
+      navigate('/mireserva/');
+    } else if (location.pathname.includes('/reservas')) {
+      navigate(`/reservas/`);
+    }
   };
 
   const handleSubmitMenu = () => {

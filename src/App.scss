@@ -53,11 +53,11 @@
     margin-right: 20px;
 }
 
-.ContNavbar{
-    .navbar-toggler{
-        margin-left: 80px;
-    }
-}
+// .ContNavbar{
+//     .navbar-toggler{
+//         margin-left: 80px;
+//     }
+// }
 
 .navBarCarrito{
     display: flex;
@@ -1566,6 +1566,16 @@
                 @include mixins.h2-576;
             }
         }
+
+        // Mi reserva
+
+        .tituloMiReserva{
+            margin: 60px 0 50px 35px;
+        }
+
+        .formMireserva{
+            padding: 0 40px;
+        }
     }
     
   /*CELULARES STANDARS */
@@ -1994,5 +2004,36 @@
             @include mixins.h1-429;
         }
     }
+
+            // NUEVA RESERVA DETALLADA
+            .tableDetail {
+                padding: 20px 20px;
+                grid-template-columns: 1fr;
+                .imgReservaDetalladaDiv {
+                    padding-right: 0;
+                    .imgReservaDetallada {
+                        max-width: 100%;
+                        min-width: 300px;
+                    }
+                }
+                .formReservaDetail{
+                    .row{
+                        margin: 0;
+                    }
+                    .subReservaDetallada{
+                        padding-top: 15px;
+                    }
+                }
+                .table-dark {
+                    --bs-table-bg: #228fa2;
+                }
+            }
+            .tituloReservas {
+                @include mixins.h1-576;
+                .codeReserva {
+                    @include mixins.h2-576;
+                }
+            }
+    
 }
 

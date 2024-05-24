@@ -76,13 +76,9 @@ const Carrito = () => {
         <div className="detallesCarrito">
           <p className="subtitleCarrito">Número de reserva</p>
           <p>ABYA{idReserva}</p>
-          <p className="subtitleCarrito">Precio</p>
-          <p>${precioComida.toLocaleString('es-ES')}</p>
-          <p className="subtitleCarrito">Descuento</p>
-          <p>15%</p>
           <div className="separador"></div>
           <p className="subtitleCarrito">Precio final</p>
-          <p>${((precioComida * 75) / 100).toLocaleString('es-ES')}</p>
+          <p>${precioComida.toLocaleString('es-ES')}</p>
           <Button
             className="btnCarrito"
             variant="primary"
