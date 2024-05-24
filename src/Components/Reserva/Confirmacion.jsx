@@ -4,8 +4,6 @@ import { DateBooking } from '../../Context/DateContext';
 const Confirmacion = () => {
   const { idReserva } = useContext(DateBooking);
 
-  console.log(idReserva);
-
   return (
     <>
       <div className="confirmacion">
@@ -28,7 +26,7 @@ const Confirmacion = () => {
         </p>
         <img
           className="imagenConfirmacion"
-          src="/src/assets/imgs/menu1.jpg"
+          src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fmenu1.jpg?alt=media&token=ebc25772-63a4-466c-8275-042b37f11a93"
           alt="foto-menu"
         />
       </div>

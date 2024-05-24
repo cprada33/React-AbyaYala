@@ -1,8 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 const Cabanas = () => {
   const location = useLocation();
-  const renderHome = location.pathname === "/";
+  const renderHome = location.pathname === '/';
 
   return (
     <>
@@ -16,14 +16,14 @@ const Cabanas = () => {
         <div className="img-safari">
           <img
             className="cabanas"
-            src="src/assets/imgs/cabanasafari.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fcabanasafari.jpg?alt=media&token=5da0e6bc-818e-4686-8093-fc4700ccdeb0"
             alt="safari"
           />
         </div>
         <div className="img-ancestral">
           <img
             className="cabanas"
-            src="src/assets/imgs/cabanaancestral.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fcabanaancestral.jpg?alt=media&token=f2f21b00-8d9a-49a2-b9f1-d4c57701509d"
             alt="ancestral"
           />
         </div>

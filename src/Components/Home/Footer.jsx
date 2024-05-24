@@ -1,4 +1,4 @@
-import EmailIcon from "@mui/icons-material/Email";
+import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
   return (

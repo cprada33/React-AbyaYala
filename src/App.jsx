@@ -13,8 +13,14 @@ import PickCabanaView from './Views/PickCabanaView';
 import DatosReservaView from './Views/DatosReservaView';
 import ConfirmacionDeReservaView from './Views/ConfirmacionDeReservaView';
 import ReservasView from './Views/ReservasView';
-import ReservaDetailView from './Views/ReservaDetailView';
+import ReservaDetalladaView from './Views/ReservaDetalladaView';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import RouteGuard from './Components/ReservasDisplay/RouteGuard';
+import Login from './Components/ReservasDisplay/Login';
+import MenuView from './Views/MenuView';
+import MiReservaView from './Views/MiReservaView';
+import SelectMiReservaView from './Views/SelectMiReservaView';
+import RouteGuardLink from './Components/ReservasDisplay/RoteGuardLink';
 
 function App() {
   return (
@@ -38,6 +44,22 @@ function App() {
                 <Route path="/contacto" element={<ContactoView />}></Route>
                 <Route path="/booking" element={<PickCabanaView />}></Route>
                 <Route
+                  path="/mireserva"
+                  element={<SelectMiReservaView />}
+                ></Route>
+                <Route
+                  path="/mireserva/:idreserva"
+                  element={<MiReservaView />}
+                ></Route>
+                <Route
+                  path="/mireserva/:idreserva/menu"
+                  element={
+                    <RouteGuardLink>
+                      <MenuView />
+                    </RouteGuardLink>
+                  }
+                ></Route>
+                <Route
                   path="/datos_de_reserva"
                   element={<DatosReservaView />}
                 ></Route>
@@ -45,11 +67,32 @@ function App() {
                   path="/confirmacion_de_reserva"
                   element={<ConfirmacionDeReservaView />}
                 ></Route>
-                <Route path="/reservas" element={<ReservasView />}></Route>
+                <Route
+                  path="/reservas"
+                  element={
+                    <RouteGuard>
+                      {' '}
+                      <ReservasView />{' '}
+                    </RouteGuard>
+                  }
+                ></Route>
                 <Route
                   path="/reservas/:idreserva"
-                  element={<ReservaDetailView />}
+                  element={
+                    <RouteGuard>
+                      <ReservaDetalladaView />
+                    </RouteGuard>
+                  }
                 ></Route>
+                <Route
+                  path="/reservas/:idreserva/menu"
+                  element={
+                    <RouteGuard>
+                      <MenuView />
+                    </RouteGuard>
+                  }
+                ></Route>
+                <Route path="login" element={<Login />}></Route>
               </Routes>
               <Footer />
             </BrowserRouter>

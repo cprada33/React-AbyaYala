@@ -15,21 +15,6 @@ const Banner = () => {
     setReservaRealizada,
   } = useContext(DateBooking);
 
-  // useEffect(() => {
-  //   const infoReserva = {
-  //     Correo: 'cprada33@hotmail.com',
-  //     secret: 'SendThisEmail',
-  //   };
-
-  //   const functions = getFunctions();
-  //   const sendEmail = httpsCallable(functions, 'sendEmail');
-  //   sendEmail({ infoReserva }).then((result) => {
-  //     // Read result of the Cloud Function.
-  //     /** @type {any} */
-  //     console.log('hola', result);
-  //   });
-  // }, []);
-
   const [InputIn, setInputIn] = useState(null);
   const [InputOut, setInputOut] = useState(null);
   const navigate = useNavigate();
@@ -54,11 +39,11 @@ const Banner = () => {
       <section className="grid-banner">
         <img
           className="img-grid-banner"
-          src="src/assets/imgs/bannermujer.png"
+          src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fbannermujer.png?alt=media&token=cfda4ded-25e4-4c97-9065-ca6f497e344c"
           alt="mujerlogo"
         />
         <div className="text-gridbanner-parent main">
-          <h1 className="text-gridbanner">BIENVENIDO</h1>
+          <h1 className="text-gridbanner">BIENVENIDOS</h1>
         </div>
         <div className="text-gridbanner-parent blue">
           <h1 className="text-gridbanner blue primero">A</h1>

@@ -1,10 +1,10 @@
-import itemData from "../assets/cabanas.json";
-import CarouselBanner from "./CarouselBanner";
-import ImageList from "./ImageList";
+import itemData from '../assets/cabanas.json';
+import CarouselBanner from './CarouselBanner';
+import ImageList from './ImageList';
 
 const BannerCabanas = () => {
   const cabanasFilter = itemData.filter(
-    (itemData) => itemData.tipo === "Safari"
+    (itemData) => itemData.tipo === 'Safari',
   );
 
   return (
@@ -29,7 +29,10 @@ const BannerCabanas = () => {
             <h2>CABAÑA ANCESTRAL</h2>
           </div>
           <div className="img-ancestral-cabana">
-            <img src="src/assets/imgs/ancestral.jpeg" alt="ancestral" />
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fancestral.jpeg?alt=media&token=d3bf286c-baa8-4702-adec-0dfc710cd297"
+              alt="ancestral"
+            />
           </div>
           <div className="tit-ancestral-cabana">
             <p>AWÁ KWAIKER</p>

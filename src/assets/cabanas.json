@@ -1,6 +1,6 @@
 [
     {
-      "img": "src/assets/imgs/kashi.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fkashi.jpg?alt=media&token=f2381d8f-ae0e-4f92-a826-754a98a8a220",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "KASHI",
@@ -9,7 +9,7 @@
     },
 
     {
-      "img": "src/assets/imgs/kogui.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fkogui.jpg?alt=media&token=ea8d442e-6ec6-4572-ac82-345c32b27f94",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "KOGUI",
@@ -17,7 +17,7 @@
     },
 
     {
-      "img": "src/assets/imgs/kombilesa.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fkombilesa.jpg?alt=media&token=69133122-f892-414c-8963-0d028d12e402",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "KOMBILESA",
@@ -25,7 +25,7 @@
     },
 
     {
-      "img": "src/assets/imgs/maleiwa.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fmaleiwa.jpg?alt=media&token=e48205d2-d0f1-4580-b9e9-772831965b36",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "MALEIWA",
@@ -33,7 +33,7 @@
     },
 
     {
-      "img": "src/assets/imgs/ochun.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fochun.jpg?alt=media&token=dfbdb759-5f14-41b4-9f40-a57ca3ccaef4",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "OCHUN",
@@ -41,7 +41,7 @@
     },
 
     {
-      "img": "src/assets/imgs/pangea.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpangea.jpg?alt=media&token=1abfe2af-b6f7-4874-b787-24b444828932",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "PANGEA",
@@ -49,7 +49,7 @@
     },
 
     {
-      "img": "src/assets/imgs/polekakasue.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fpolekakasue.jpg?alt=media&token=dd1b5824-d25d-42ea-b09c-aee251356e56",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "POLEKA KASUE",
@@ -69,7 +69,7 @@
     },
 
     {
-      "img": "src/assets/imgs/serankua.jpg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fserankua.jpg?alt=media&token=09fabfc2-c5e7-4f11-b1ba-17ef9a5bc63c",
       "tipo": "Safari",
       "titulo": "CABAÑA SAFARI",
       "name": "SERANKUA",
@@ -77,7 +77,7 @@
     },
 
     {
-      "img": "src/assets/imgs/ancestral.jpeg",
+      "img": "https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fancestral.jpeg?alt=media&token=d3bf286c-baa8-4702-adec-0dfc710cd297",
       "tipo": "Ancestral",
       "titulo": "CABAÑA ANCESTRAL",
       "name": "AWÁ KWAIKER",
