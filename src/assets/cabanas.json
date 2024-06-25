@@ -82,7 +82,7 @@
       "titulo": "CABAÑA ANCESTRAL",
       "name": "AWÁ KWAIKER",
       "pick": true,
-      "cantidad": "1",
+      "cantidad": "2",
       "precio": 420000,
       "server": "http://localhost:3000/datos2",
       "description": "Pueblo Indio Americano, que en lengua Awapit significa 'Gente de la montaña'.",

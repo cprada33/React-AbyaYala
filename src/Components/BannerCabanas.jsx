@@ -43,6 +43,21 @@ const BannerCabanas = () => {
               de la montaña&quot;.
             </p>
           </div>
+          {/* <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/abyayala-c7fa8.appspot.com/o/assets%2Fancestral.jpeg?alt=media&token=d3bf286c-baa8-4702-adec-0dfc710cd297"
+              alt="ancestral"
+            />
+          </div>
+          <div className="tit-ancestral-cabana">
+            <p>AWÁ KWAIKER</p>
+          </div>
+          <div className="text-ancestral-cabana">
+            <p>
+              Pueblo Indio Americano, que en lengua Awapit significa &quot;Gente
+              de la montaña&quot;.
+            </p>
+          </div> */}
         </div>
       </section>
     </>
